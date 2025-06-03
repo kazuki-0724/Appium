@@ -103,7 +103,7 @@ class CommonCommand:
             "y": y,
             "duration": duration_ms  # ミリ秒単位
         })
-        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Tapped at ({x}, {y})")
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Long Tapped at ({x}, {y})")
 
 
     # 任意の変化量でスワイプを実行する関数
