@@ -3,9 +3,10 @@ from PIL import Image, ImageChops
 import numpy as np
 import re
 
-folder1 = "../reports/20250604"
-folder2 = "../reports/20250605"
-html_files = [f"../reports/report{i}.html" for i in range(1, 6)]
+folder1 = "../reports/20250608"
+folder2 = "../reports/20250608"
+# 添え字
+html_files = [f"../reports/report{i}.html" for i in range(1, 10)]
 output_dir = "../reports/generated"
 
 # 1. 画像比較して類似率を辞書に格納

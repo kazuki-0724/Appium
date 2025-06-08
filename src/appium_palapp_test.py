@@ -10,6 +10,9 @@ from test_case.splash import Splash
 from test_case.shopping_tab import ShoppingTab
 from test_case.item_search import ItemSearch
 from test_case.select_product_catalog import SelectProductCatalog
+from test_case.parukuru_promotion import PalPromo
+from test_case.must_read_modal import MustReadModal
+from test_case.cart import Cart
 
 
 @pytest.fixture
@@ -26,12 +29,16 @@ def driver():
 
 
 # テストケース(先頭にtest_をつける)
-def test_all_scenario(driver):
+def stest_all_scenario(driver):
     try:
         print("\n#テスト開始######################################")
 
         # スプラッシュ画面
         Splash().do_test(driver)
+        # 必読モーダル
+        MustReadModal().do_test(driver)
+        # パルくる便プロモ
+        PalPromo().do_test(driver)
         # 未ログイントップ
         NoLoginTop().do_test(driver)
         # アカウント設定
@@ -41,20 +48,13 @@ def test_all_scenario(driver):
         # 通知権限の許可（座標は端末により調整）
         CommonCommand().tap_anywhere(driver, 0.498, 0.550)
         time.sleep(3)
-
-        # 必読モーダル
-
-        # パルくる便プロモ
-        
         # 企画回選択
         SelectProductCatalog().do_test(driver)
         time.sleep(3)
         # 買い物タブ
         ShoppingTab().do_test(driver)
-
-
         #商品検索画面
-        # ItemSearch().do_test(driver)
+        ItemSearch().do_test(driver)
 
 
         print("\n#テスト終了######################################")
@@ -63,11 +63,11 @@ def test_all_scenario(driver):
         print("エラー内容:", e)
 
 
-def stest_sample_case(driver):
+def test_sample_case(driver):
     
     try:
         print("\n#サンプルテスト開始######################################")
-        ShoppingTab().do_test(driver)
+        ItemSearch().do_test(driver)
         print("\n#サンプルテスト終了######################################")
     
     except Exception as e:

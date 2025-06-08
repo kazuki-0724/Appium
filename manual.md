@@ -16,84 +16,60 @@ pip install Appium-Python-Client pytest
 
 ---
 
-## 2. Appiumサーバーの起動
+## 2. テストコードの仕組み
+### CommonCommandをベースクラスとして、基本操作を定義している。
+基本操作：絶対座標
+1. タップ
+2. 長押し
+3. スクロール
+4. スワイプ
+5. スクロール
+
+### 基本操作：UI部品
+1. ボタンクリック
+2. テキスト入力
+
+各テストケースは上記の基本操作を組み合わせて実現している
+
+
+---
+
+## 3. テストの準備
+
+- 開発者オプションからUSBデバッグを有効化
+- テストに使用する組合員についてデータの準備を行う
+
+---
+
+
+## 4. テストの実行
+
+1. Appiumサーバを起動する
+2. pytestコマンドでテストケースを実行する
+3. 評価結果の処理を実行する
 
 ```sh
 appium --allow-insecure=adb_shell
-```
-
----
-
-## 3. テスト用Android端末の準備
-
-- USBデバッグを有効化
-- `adb devices` で認識されていることを確認
-
----
-
-## 4. テストコード例
-
-```python
-import pytest
-from appium import webdriver
-from appium.options.android import UiAutomator2Options
-import time
-
-@pytest.fixture
-def driver():
-    options = UiAutomator2Options()
-    options.platform_name = "Android"
-    options.device_name = "実機のデバイス名"
-    options.app_package = "com.example.mychat"
-    options.app_activity = "com.example.mychat.MainActivity"
-    options.no_reset = True
-
-    driver = webdriver.Remote("http://localhost:4723", options=options)
-    yield driver
-    driver.quit()
-
-def test_tap_by_id(driver):
-    try:
-        # 右上の設定ボタンをタップ
-        button = driver.find_element("id", "com.example.mychat:id/setting_button")
-        button_location = button.location
-        print(f"Button location: {button_location['x']},{button_location['y']}")
-        button.click()
-
-        # 3秒待機
-        time.sleep(3)
-
-        # 画面のタップ（モーダルを閉じるため）
-        driver.execute_script("mobile:shell", {
-            "command": "input",
-            "args": ["tap", str(button_location['x']), str(button_location['y'])],
-            "includeStderr": True,
-            "timeout": 5000
-        })
-
-        # EditTextを取得して文字列を入力
-        edit_text = driver.find_element("id", "com.example.mychat:id/editText")
-        edit_text.send_keys("テスト入力")
-
-    except Exception as e:
-        print("エラー内容:", e)
-
-def test_input_text(driver):
-    # EditTextに文字列を入力
-    edit_text = driver.find_element("id", "com.example.mychat:id/editText")
-    edit_text.send_keys("テスト入力")
-    time.sleep(2)
-```
-
----
-
-## 5. テストの実行
-
-```sh
 pytest -s appium_test.py
+python image_similarity.py
 ```
 
 ---
+
+## 5. テストの評価
+
+1. 評価結果の処理を実行する
+```sh
+python image_similarity.py
+```
+
+2. テスト結果の確認
+テスト実行時のスクリーンショットは「YYYYMMDD」のフォルダに保存されている。
+各テストケースの結果は「report〇.html」にて確認できる。
+正しいテスト結果のスクリーンショットと実行結果のスクリーンショットをピクセル単位で比較する。
+
+---
+
 
 ## 6. Appium Inspectorの使い方
 
@@ -103,37 +79,3 @@ pytest -s appium_test.py
 4. 画面上の要素をクリックしてIDやXPathを確認
 
 ---
-
-## 7. よく使う操作例
-
-- ボタンをIDでタップ  
-  `driver.find_element("id", "xxx").click()`
-- テキスト入力  
-  `driver.find_element("id", "xxx").send_keys("文字列")`
-- 画面中央をタップ（adbコマンド利用）  
-  ```python
-  size = driver.get_window_size()
-  x = size['width'] // 2
-  y = size['height'] // 2
-  driver.execute_script("mobile:shell", {
-      "command": "input",
-      "args": ["tap", str(x), str(y)],
-      "includeStderr": True,
-      "timeout": 5000
-  })
-  ```
-
----
-
-## 8. トラブルシューティング
-
-- **要素が見つからない**  
-  → Appium InspectorでIDやXPathを再確認
-- **mobile:shellでエラー**  
-  → サーバー起動時に `--allow-insecure=adb_shell` を付ける
-- **printが表示されない**  
-  → `pytest -s` で実行
-
----
-
-以上

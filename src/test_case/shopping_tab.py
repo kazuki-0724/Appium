@@ -5,6 +5,11 @@ from common.common_const import Direction
 class ShoppingTab(CommonCommand):
 
     # パーツID
+    ORDER_CONFIRM = "button_order_confirm"
+    ORDER_CONFIRM_IN_REC_MODAL = "toPurchaseText"
+    ORDER_COMPLETE = "button_order_complete"
+    CONTINUE_SHOPPING = "button_continue_shopping"
+    PROCATALOG_SELECT = "productCatalogSelectBtn"
 
     def do_test(self,driver):
         try:
@@ -116,5 +121,55 @@ class ShoppingTab(CommonCommand):
             self.tap_button(driver, self.TAB_SHOPPING)
             self.save_screenshot_with_date(driver, "shopping_tab_097.png")
 
+        except Exception as e:
+            print("エラー内容:", e)
+
+
+    def do_sample_test(self, driver):
+        try:
+            # 赤バッチを消すために一度注文送信を行う
+            self.tap_button(driver, self.TAB_CART)
+            self.tap_button(driver, self.ORDER_CONFIRM)
+            self.tap_button(driver, self.ORDER_CONFIRM_IN_REC_MODAL)
+            self.tap_button(driver, self.ORDER_COMPLETE)
+            self.tap_button(driver, self.CONTINUE_SHOPPING)
+            self.tap_button(driver, self.PROCATALOG_SELECT)
+            # 赤バッチが消えていることの確認
+            self.save_screenshot_with_date(driver, "shopping_tab_098.png")
+
+            # 任意の商品を追加する
+            self.long_tap(driver, 0.870, 0.877, 200)
+            self.save_screenshot_with_date(driver, "shopping_tab_100.png")
+
+            # カゴタブをタップ
+            self.tap_button(driver, self.TAB_CART)
+            self.save_screenshot_with_date(driver, "shopping_tab_100.png",0)
+
+            # 追加した商品の場所までスクロール
+            self.scroll_vertical(driver, 1821, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.scroll_vertical(driver, 1677, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.scroll_vertical(driver, 1743, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.scroll_vertical(driver, 1743, Direction.DOWN.value, WaitTime.SHORT.value)
+
+
+            # 「買い物」タブをタップ
+            self.tap_button(driver, self.TAB_SHOPPING)
+
+            self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.scroll_vertical(driver, 1954, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.scroll_vertical(driver, 1702, Direction.DOWN.value, WaitTime.SHORT.value)
+
+            # 「【view=pochiなし】同窓遷移」をタップ
+            self.long_tap(driver, 0.157, 0.345, 200)
+
+            self.save_screenshot_with_date(driver, "shopping_tab_108.png")
+            
+
+
+
+
+
+
+                    
         except Exception as e:
             print("エラー内容:", e)
