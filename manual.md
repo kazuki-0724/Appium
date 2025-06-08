@@ -46,19 +46,17 @@ pip install Appium-Python-Client pytest
 
 1. Appiumサーバを起動する
 2. pytestコマンドでテストケースを実行する
-3. 評価結果の処理を実行する
 
 ```sh
 appium --allow-insecure=adb_shell
 pytest -s appium_test.py
-python image_similarity.py
 ```
 
 ---
 
 ## 5. テストの評価
 
-1. 評価結果の処理を実行する
+1. 評価処理を実行する
 ```sh
 python image_similarity.py
 ```
