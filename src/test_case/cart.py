@@ -194,6 +194,99 @@ class Cart(CommonCommand):
             self.tap_anywhere(driver, 0.5, 0.572)
             self.save_screenshot_with_date(driver, "cart_244.png")
 
+
+            # 【まとめて買い物セット】
+            # 注文番号「113808」を入力する
+            self.tap_button(driver, self.CALC_IF_ITEM_NO)
+            self.tap_button(driver, "button1")
+            self.tap_button(driver, "button1")
+            self.tap_button(driver, "button3")
+            self.tap_button(driver, "button8")
+            self.tap_button(driver, "button0")
+            self.tap_button(driver, "button8")
+            self.save_screenshot_with_date(driver, "cart_245.png")
+
+            # 商品画像をタップ
+            self.long_tap(driver, 0.118, 0.599, 200)
+            self.save_screenshot_with_date(driver, "cart_247.png")
+
+            # 「x」ボタンをタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_251.png")
+
+            # 商品名をタップ
+            self.long_tap(driver, 0.328, 0.587, 200)
+            self.save_screenshot_with_date(driver, "cart_253.png")
+            
+            # 「x」ボタンをタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_257.png")
+
+            # クチコミをタップ
+            self.long_tap(driver, 0.275, 0.62, 200)
+            self.save_screenshot_with_date(driver, "cart_259.png")
+
+            # 「x」ボタンをタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_263.png")
+
+            # 「カゴへ」をタップしてエラーモーダルが表示される
+            self.tap_button(driver, self.CALC_IF_ADD)
+            self.save_screenshot_with_date(driver, "cart_264.png")
+
+            # モーダルを閉じる
+            self.tap_anywhere(driver, 0.5, 0.572)
+            self.save_screenshot_with_date(driver, "cart_266.png")
+
+
+
+            # 【パルくる便】
+            # 注文番号「080811」を入力する
+            self.tap_button(driver, self.CALC_IF_ITEM_NO)
+            self.tap_button(driver, "button0")
+            self.tap_button(driver, "button8")
+            self.tap_button(driver, "button0")
+            self.tap_button(driver, "button8")
+            self.tap_button(driver, "button1")
+            self.tap_button(driver, "button1")
+            self.save_screenshot_with_date(driver, "cart_267.png")
+
+            # 「カゴへ」をタップしてエラーモーダルが表示される
+            self.tap_button(driver, self.CALC_IF_ADD)
+            self.save_screenshot_with_date(driver, "cart_268.png")
+
+            # モーダルのリンクをタップする
+            self.long_tap(driver, 0.684, 0.503, 200)
+            self.save_screenshot_with_date(driver, "cart_269.png")
+
+            # かごタブをタップする
+            self.tap_button(driver, self.TAB_CART)
+            self.save_screenshot_with_date(driver, "cart_272.png")
+
+
+
+
+            # 【特定生協】
+            # 注文番号「685」を入力して、「カゴへ」をタップしてエラーモーダルが表示される
+            self.tap_button(driver, self.CALC_IF_ITEM_NO)
+            self.tap_button(driver, "button6")
+            self.tap_button(driver, "button8")
+            self.tap_button(driver, "button5")
+            self.tap_button(driver, self.CALC_IF_ADD)
+            self.save_screenshot_with_date(driver, "cart_273.png")
+
+            # 「詳細はこちら」をタップする
+            self.long_tap(driver, 0.498, 0.538, 200)
+            self.save_screenshot_with_date(driver, "cart_274.png")
+
+            # かごタブをタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_275.png")
+
+            # 「OK」をタップしてエラーモーダルを閉じる
+            self.long_tap(driver, 0.5, 0.614, 200)
+            self.save_screenshot_with_date(driver, "cart_277.png")
+
             
         except Exception as e:
             print("エラー内容:", e)
