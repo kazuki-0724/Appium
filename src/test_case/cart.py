@@ -10,11 +10,33 @@ class Cart(CommonCommand):
     CALC_IF_ADD = "add"
     CALC_IF_AMOUNT = "amount"
     CALC_IF_ITEM_NO = "itemNo"
+    CALC_IF_BUTTON_CHANGE = "button_change"
+    CALC_IF_CLOSE = "close"
+    ORDER_CONFIRM = "button_order_confirm"
+    CLOSE_BTN_IN_MODAL = "toCloseImageView"
+    CONFIRM_CHECKBOX = "confirm_checkbox_text"
 
 
     def do_test(self,driver):
         try:
-            # カゴ画面
+            self.test_167_177(self, driver)
+            self.test_178_195(self, driver)
+            self.test_196_244(self, driver)
+            self.test_245_266(self, driver)
+            self.test_267_289(self, driver)
+            self.test_290_320(self, driver)
+            self.test_321_334(self, driver)
+            self.test_335_338(self, driver)
+            self.test_359_374(self, driver)
+
+
+        except Exception as e:
+            print("エラー内容:", e)
+
+    
+
+    def test_167_177(self, driver):
+        try:
             #【注文内容変更】
             # 「カゴ」をタップする
             self.tap_button(driver, self.TAB_CART)
@@ -41,9 +63,15 @@ class Cart(CommonCommand):
             # キーボード領域外をタップで入力を確定させる
             self.long_tap(driver, 0.9, 0.391, 200)
             self.save_screenshot_with_date(driver, "cart_177.png")
+        
+        except Exception as e:
+            print("エラー内容:", e)
+    
 
 
-
+    def test_178_195(self, driver):
+        try:
+            
             # 【お届け先確認・変更】
             # 「お届け先を変更する」をタップする
             # self.long_tap(driver, 0.9, 0.391, 200)
@@ -83,8 +111,13 @@ class Cart(CommonCommand):
             self.tap_button(driver, self.HEADER_CLOSE)
             self.save_screenshot_with_date(driver, "cart_195.png")
 
+        except Exception as e:
+            print("エラー内容:", e)
+    
 
 
+    def test_196_244(self, driver):
+        try:
             #【電卓並び】
             self.tap_button(driver, self.CALC_IF)
             self.tap_button(driver, self.CALC_IF_CLEAR)
@@ -194,7 +227,13 @@ class Cart(CommonCommand):
             self.tap_anywhere(driver, 0.5, 0.572)
             self.save_screenshot_with_date(driver, "cart_244.png")
 
+        except Exception as e:
+            print("エラー内容:", e)
 
+    
+
+    def test_245_266(self, driver):
+        try:
             # 【まとめて買い物セット】
             # 注文番号「113808」を入力する
             self.tap_button(driver, self.CALC_IF_ITEM_NO)
@@ -238,8 +277,13 @@ class Cart(CommonCommand):
             self.tap_anywhere(driver, 0.5, 0.572)
             self.save_screenshot_with_date(driver, "cart_266.png")
 
+        except Exception as e:
+            print("エラー内容:", e)
 
+    
 
+    def test_267_289(self, driver):
+        try:
             # 【パルくる便】
             # 注文番号「080811」を入力する
             self.tap_button(driver, self.CALC_IF_ITEM_NO)
@@ -287,6 +331,227 @@ class Cart(CommonCommand):
             self.long_tap(driver, 0.5, 0.614, 200)
             self.save_screenshot_with_date(driver, "cart_277.png")
 
-            
+
+
+
+            # 【配列】
+            # 「配列」をタップする
+            self.tap_button(driver, self.CALC_IF_BUTTON_CHANGE)
+            self.save_screenshot_with_date(driver, "cart_279.png")
+
+            # 数字ボタンをタップする
+            # self.tap_button(driver, self.CALC_IF_CLEAR)
+            self.tap_button(driver, "button0")
+            self.tap_button(driver, "button7")
+            self.tap_button(driver, "button8")
+            self.tap_button(driver, "button9")
+            self.tap_button(driver, "button4")
+            self.tap_button(driver, "button5")
+            self.tap_button(driver, "button6")
+            self.save_screenshot_with_date(driver, "cart_280.png")
+
+            # 「配列」をタップする
+            self.tap_button(driver, self.CALC_IF_BUTTON_CHANGE)
+            self.save_screenshot_with_date(driver, "cart_282.png")
+
+            # 数字ボタンをタップする
+            self.tap_button(driver, self.CALC_IF_CLEAR)
+            self.tap_button(driver, "button0")
+            self.tap_button(driver, "button1")
+            self.tap_button(driver, "button2")
+            self.tap_button(driver, "button3")
+            self.tap_button(driver, "button4")
+            self.tap_button(driver, "button5")
+            self.tap_button(driver, "button6")
+            self.save_screenshot_with_date(driver, "cart_283.png")
+
+            # 「222」を入力する
+            self.tap_button(driver, self.CALC_IF_CLEAR)
+            self.tap_button(driver, "button2")
+            self.tap_button(driver, "button2")
+            self.tap_button(driver, "button2")
+            self.save_screenshot_with_date(driver, "cart_284.png")
+
+            # 閉じるボタンをタップする
+            self.tap_button(driver, self.CALC_IF_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_286.png")
+
+            # 電卓IFボタンをタップする
+            self.tap_button(driver, self.CALC_IF)
+            self.save_screenshot_with_date(driver, "cart_289.png")
+
         except Exception as e:
             print("エラー内容:", e)
+    
+
+
+    def test_290_320(self, driver):
+        try:
+            # 【商品詳細画面】
+            # 「111」の商品画像をタップ
+            self.long_tap(driver, 0.121, 0.364, 200)
+            self.save_screenshot_with_date(driver, "cart_291.png")
+
+            self.scroll_vertical(driver, 256, Direction.DOWN.value)
+            # 商品情報の「？」をタップする
+            self.long_tap(driver, 0.522, 0.818, 200)
+            self.save_screenshot_with_date(driver, "cart_292.png")
+
+            # 「←」をタップする
+            self.tap_button(driver, self.BACK)
+            self.save_screenshot_with_date(driver, "cart_293.png")
+          
+            # 「クチコミ」をタップする
+            self.tap_anywhere(driver, 0.395, 0.818)
+            self.save_screenshot_with_date(driver, "cart_294.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_296.png")
+
+            # 「111」の商品画像をタップ
+            self.long_tap(driver, 0.366, 0.356, 200)
+            self.save_screenshot_with_date(driver, "cart_297.png")
+
+            # お気に入りが見えるまでスクロール
+            self.scroll_vertical(driver, 487, Direction.DOWN.value)
+            # お気に入りをタップする
+            self.long_tap(driver, 0.310, 0.842, 200)
+            self.save_screenshot_with_date(driver, "cart_298.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_299.png")
+
+
+            # 「111」の商品画像をタップ
+            self.long_tap(driver, 0.366, 0.356, 200)
+            self.save_screenshot_with_date(driver, "cart_302.png")
+
+            # お気に入りが見えるまでスクロール
+            self.scroll_vertical(driver, 445, Direction.DOWN.value)
+            # お気に入りをタップする
+            self.long_tap(driver, 0.310, 0.858, 200)
+            self.save_screenshot_with_date(driver, "cart_303.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_306.png")
+
+
+            # 「111」の商品名をタップ
+            self.long_tap(driver, 0.366, 0.356, 200)
+            self.save_screenshot_with_date(driver, "cart_307.png")
+
+            # 「カゴへ」をタップする
+            self.tap_anywhere(driver, 0.869, 0.945)
+            self.save_screenshot_with_date(driver, "cart_308.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_313.png")
+
+            # 「111」の商品名をタップ
+            self.long_tap(driver, 0.366, 0.356, 200)
+            self.save_screenshot_with_date(driver, "cart_314.png") 
+
+            # 「削除」をタップする
+            self.tap_anywhere(driver, 0.673, 0.944)
+            self.save_screenshot_with_date(driver, "cart_315.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_320.png")
+
+        except Exception as e:
+            print("エラー内容:", e)
+
+    
+
+    def test_321_334(self, driver):
+        try:
+            # 【画面制御】
+            # 一番下までスクロール
+            self.scroll_vertical(driver, 800, Direction.DOWN.value)
+            self.scroll_vertical(driver, 800, Direction.DOWN.value)
+            self.scroll_vertical(driver, 800, Direction.DOWN.value)
+            self.save_screenshot_with_date(driver, "cart_321-1.png")
+
+            self.tap_button(driver, self.TAB_CART)
+            self.save_screenshot_with_date(driver, "cart_321-2.png")
+
+            # 322-334はやり方考える
+
+
+        except Exception as e:
+            print("エラー内容:", e)
+
+
+
+    def test_335_338(self, driver):
+        try:
+            #【レコメンドモーダル】
+            self.tap_button(driver, self.TAB_CART)
+            # 「注文へ進む」をタップする
+            self.tap_button(driver, self.ORDER_CONFIRM)
+            self.save_screenshot_with_date(driver, "cart_336.png")
+
+            # 「追加」をタップする
+            self.tap_anywhere(driver, 0.838, 0.306)
+            self.save_screenshot_with_date(driver, "cart_337.png")
+
+            # モーダルの「x」をタップする
+            self.tap_button(driver, self.CLOSE_BTN_IN_MODAL)
+            self.save_screenshot_with_date(driver, "cart_342.png")
+
+            # 「注文へ進む」をタップする
+            self.tap_button(driver, self.ORDER_CONFIRM)
+            self.save_screenshot_with_date(driver, "cart_343.png")
+
+            # 商品画像をタップする
+            self.tap_anywhere(driver, 0.135, 0.279)
+            self.save_screenshot_with_date(driver, "cart_345.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_346.png")
+
+            # モーダルの「x」をタップする
+            self.tap_button(driver, self.CLOSE_BTN_IN_MODAL)
+            self.save_screenshot_with_date(driver, "cart_348.png")
+
+            # 「注文へ進む」をタップする
+            self.tap_button(driver, self.ORDER_CONFIRM)
+            self.save_screenshot_with_date(driver, "cart_349.png")
+
+            # 商品名をタップする
+            self.tap_anywhere(driver, 0.296, 0.269)
+            self.save_screenshot_with_date(driver, "cart_350.png")
+
+            # 「カゴへ」をタップする
+            self.tap_anywhere(driver, 0.869, 0.945)
+            self.save_screenshot_with_date(driver, "cart_351.png")
+
+            # 「x」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_353.png")
+
+            # 「この企画回で再表示しない」
+            self.tap_button(driver, self.CONFIRM_CHECKBOX)
+
+
+            # 354-358
+
+        except Exception as e:
+            print("エラー内容:", e)
+
+
+
+    def test_359_374(self, driver):
+        try:
+            # 【注文チェック】
+            print("")
+
+        
+        except Exception as e:
+            print("エラー内容:", e)   

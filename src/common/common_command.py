@@ -114,7 +114,7 @@ class CommonCommand:
         x = size['width'] // 2
         y = size['height'] // 4
 
-        print(f"swipe ({diff})")
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] swipe ({diff})")
 
         driver.execute_script("mobile: swipeGesture", {
             "left": x,
@@ -132,9 +132,9 @@ class CommonCommand:
         size = driver.get_window_size()
         # 中心座標を取得
         x = size['width'] // 2
-        y = size['height'] -200
+        y = size['height'] // 2
 
-        print(f"scroll ({diff})")
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] scroll ({diff})")
     
         driver.execute_script("mobile: scrollGesture", {
             "left": x,
@@ -142,5 +142,5 @@ class CommonCommand:
             "width": 0,
             "height": diff,
             "direction": direction,
-            "percent": 0.8
+            "percent": 1.0
         })

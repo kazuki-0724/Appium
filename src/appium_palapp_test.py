@@ -13,6 +13,7 @@ from test_case.select_product_catalog import SelectProductCatalog
 from test_case.parukuru_promotion import PalPromo
 from test_case.must_read_modal import MustReadModal
 from test_case.cart import Cart
+from test_case.order_confirm import OrderConfirm
 
 
 @pytest.fixture
@@ -53,8 +54,13 @@ def stest_all_scenario(driver):
         time.sleep(3)
         # 買い物タブ
         ShoppingTab().do_test(driver)
-        #商品検索画面
+        # 商品検索画面
         ItemSearch().do_test(driver)
+        # カゴ画面
+        Cart().do_temp_test(driver)
+        # 注文内容確認確認
+        OrderConfirm().do_test(driver)
+
 
 
         print("\n#テスト終了######################################")
@@ -67,7 +73,7 @@ def test_sample_case(driver):
     
     try:
         print("\n#サンプルテスト開始######################################")
-        ItemSearch().do_test(driver)
+        Cart().do_temp_test(driver)
         print("\n#サンプルテスト終了######################################")
     
     except Exception as e:

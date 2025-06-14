@@ -49,7 +49,7 @@ pip install Appium-Python-Client pytest
 
 ```sh
 appium --allow-insecure=adb_shell
-pytest -s appium_test.py
+pytest -s appium_palapp_test.py
 ```
 
 ---
