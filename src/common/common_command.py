@@ -144,3 +144,22 @@ class CommonCommand:
             "direction": direction,
             "percent": 1.0
         })
+
+
+     def clear_cart(self, driver):
+         while True:
+             # 金額を確認する
+             element = driver.find_element("id", "jp.co.pal_system.pochipal:id/" + HEADER_FEE_TOTAL)
+             if element.text in "カゴ 0円(税込)"
+                 break
+             else 
+                 # 一度カゴ画面に遷移
+                 self.tap_button(driver, self.TAB_CART)
+                 # 通常商品のみの前提で一番上部にある商品を削除
+                 self.long_tap(driver, 0.121, 0.364, 200)
+                 # 「削除」をタップ
+                 self.tap_anywhere(driver, 0.673, 0.944)
+                 # 「x」をタップ
+                 self.tap_button(driver, self.HEADER_CLOSE) 
+         
+         
