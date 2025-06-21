@@ -14,6 +14,7 @@ from test_case.parukuru_promotion import PalPromo
 from test_case.must_read_modal import MustReadModal
 from test_case.cart import Cart
 from test_case.order_confirm import OrderConfirm
+from test_case.order_complete import OrderComplete
 from common.common_command import CommonCommand
 
 
@@ -61,7 +62,8 @@ def stest_all_scenario(driver):
         Cart().do_temp_test(driver)
         # 注文内容確認確認
         OrderConfirm().do_test(driver)
-
+        # 送信完了画面
+        OrderComplete().do_test(driver)
 
 
         print("\n#テスト終了######################################")
@@ -74,7 +76,7 @@ def test_sample_case(driver):
     
     try:
         print("\n#サンプルテスト開始######################################")
-        CommonCommand().clear_cart(driver)
+        OrderComplete().do_test(driver)
         print("\n#サンプルテスト終了######################################")
     
     except Exception as e:

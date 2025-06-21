@@ -70,6 +70,13 @@ class CommonCommand:
         print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Back button tapped")
 
 
+    # 戻るボタンをタップする関数
+    def tap_close_button(self, driver, sleep_time=WaitTime.SHORT.value):
+        time.sleep(sleep_time)
+        driver.find_element("id", "jp.co.pal_system.pochipal:id/"+CommonCommand.HEADER_CLOSE).click()
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] close button tapped")
+
+
     # 文字を入力する関数
     def input_text(self, driver, element_id, text, sleep_time=WaitTime.SHORT.value):
         time.sleep(sleep_time)
