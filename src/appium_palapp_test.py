@@ -14,6 +14,7 @@ from test_case.parukuru_promotion import PalPromo
 from test_case.must_read_modal import MustReadModal
 from test_case.cart import Cart
 from test_case.order_confirm import OrderConfirm
+from common.common_command import CommonCommand
 
 
 @pytest.fixture
@@ -73,7 +74,7 @@ def test_sample_case(driver):
     
     try:
         print("\n#サンプルテスト開始######################################")
-        Cart().do_temp_test(driver)
+        CommonCommand().clear_cart(driver)
         print("\n#サンプルテスト終了######################################")
     
     except Exception as e:

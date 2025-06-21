@@ -146,20 +146,23 @@ class CommonCommand:
         })
 
 
-     def clear_cart(self, driver):
-         while True:
-             # 金額を確認する
-             element = driver.find_element("id", "jp.co.pal_system.pochipal:id/" + HEADER_FEE_TOTAL)
-             if element.text in "カゴ 0円(税込)"
+    # カートを空にする関数
+    # 通常商品で削除グレーアウトになっていない商品であればまとめて削除できる
+    def clear_cart(self, driver):
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ■ CLEAR CART START")
+        while True:
+            # 金額を確認する
+            element = driver.find_element("id", "jp.co.pal_system.pochipal:id/" + self.HEADER_FEE_TOTAL)
+            if "0円(税込)" == element.text:
                  break
-             else 
-                 # 一度カゴ画面に遷移
-                 self.tap_button(driver, self.TAB_CART)
-                 # 通常商品のみの前提で一番上部にある商品を削除
-                 self.long_tap(driver, 0.121, 0.364, 200)
-                 # 「削除」をタップ
-                 self.tap_anywhere(driver, 0.673, 0.944)
-                 # 「x」をタップ
-                 self.tap_button(driver, self.HEADER_CLOSE) 
-         
+            else:
+                # 一度カゴ画面に遷移
+                self.tap_button(driver, self.TAB_CART)
+                # 通常商品のみの前提で一番上部にある商品を削除
+                self.long_tap(driver, 0.121, 0.364, 200)
+                # 「削除」をタップ
+                self.tap_anywhere(driver, 0.673, 0.944)
+                # 「x」をタップ
+                self.tap_button(driver, self.HEADER_CLOSE)
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ■ CLEAR CART END")
          
