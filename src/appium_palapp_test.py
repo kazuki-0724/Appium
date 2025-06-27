@@ -59,7 +59,7 @@ def stest_all_scenario(driver):
         # 商品検索画面
         ItemSearch().do_test(driver)
         # カゴ画面
-        Cart().do_temp_test(driver)
+        Cart().do_test(driver)
         # 注文内容確認確認
         OrderConfirm().do_test(driver)
         # 送信完了画面
