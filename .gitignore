@@ -1,0 +1,19 @@
+```gitignore
+# Python
+__pycache__/*.pyc
+    
+# Pytest
+.pytest_cache/
+    
+# Reports
+# reports/generated/
+# reports/screenshot/
+reports/bk/
+    
+# IDE / Editor
+.idea/
+.vscode/
+    
+# Env file
+.env
+```

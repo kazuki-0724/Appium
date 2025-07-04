@@ -32,7 +32,7 @@ def driver():
 
 
 # テストケース(先頭にtest_をつける)
-def stest_all_scenario(driver):
+def test_all_case(driver):
     try:
         print("\n#テスト開始######################################")
 
@@ -72,8 +72,116 @@ def stest_all_scenario(driver):
         print("エラー内容:", e)
 
 
+# 各テストケースを単独で実行するメソッド
+def test_splash(driver):
+    try:
+        print("\n#スプラッシュ画面テスト開始######################################")
+        Splash().do_test(driver)
+        print("\n#スプラッシュ画面テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_must_read_modal(driver):
+    try:
+        print("\n#必読モーダルテスト開始######################################")
+        MustReadModal().do_test(driver)
+        print("\n#必読モーダルテスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_parukuru_promotion(driver):
+    try:
+        print("\n#パルくる便プロモテスト開始######################################")
+        PalPromo().do_test(driver)
+        print("\n#パルくる便プロモテスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_no_login_top(driver):
+    try:
+        print("\n#未ログイントップテスト開始######################################")
+        NoLoginTop().do_test(driver)
+        print("\n#未ログイントップテスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_account_create(driver):
+    try:
+        print("\n#アカウント作成テスト開始######################################")
+        AccountCreate().do_test(driver)
+        print("\n#アカウント作成テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_login(driver):
+    try:
+        print("\n#ログイン画面テスト開始######################################")
+        Login().do_test(driver)
+        print("\n#ログイン画面テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_select_product_catalog(driver):
+    try:
+        print("\n#企画回選択テスト開始######################################")
+        SelectProductCatalog().do_test(driver)
+        print("\n#企画回選択テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_shopping_tab(driver):
+    try:
+        print("\n#買い物タブテスト開始######################################")
+        ShoppingTab().do_test(driver)
+        print("\n#買い物タブテスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_item_search(driver):
+    try:
+        print("\n#商品検索画面テスト開始######################################")
+        ItemSearch().do_test(driver)
+        print("\n#商品検索画面テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_cart(driver):
+    try:
+        print("\n#カゴ画面テスト開始######################################")
+        Cart().do_test(driver)
+        print("\n#カゴ画面テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_order_confirm(driver):
+    try:
+        print("\n#注文内容確認テスト開始######################################")
+        OrderConfirm().do_test(driver)
+        print("\n#注文内容確認テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_order_complete(driver):
+    try:
+        print("\n#注文完了画面テスト開始######################################")
+        OrderComplete().do_test(driver)
+        print("\n#注文完了画面テスト終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
 def test_sample_case(driver):
-    
     try:
         print("\n#サンプルテスト開始######################################")
         OrderComplete().do_test(driver)
