@@ -19,15 +19,15 @@ class Cart(CommonCommand):
 
     def do_test(self,driver):
         try:
-            self.test_167_177(self, driver)
-            self.test_178_195(self, driver)
-            self.test_196_244(self, driver)
-            self.test_245_266(self, driver)
-            self.test_267_289(self, driver)
-            self.test_290_320(self, driver)
-            self.test_321_334(self, driver)
-            self.test_335_338(self, driver)
-            self.test_359_374(self, driver)
+            # self.test_167_177(driver)
+            # self.test_178_195(driver)
+            # self.test_196_244(driver)
+            # self.test_245_266(driver)
+            # self.test_267_289(driver)
+            # self.test_290_320(driver)
+            # self.test_321_334(driver)
+             self.test_335_338(driver)
+            # self.test_359_374(driver)
 
 
         except Exception as e:
@@ -61,7 +61,7 @@ class Cart(CommonCommand):
             # キーボードの「5」をタップする
             self.tap_anywhere(driver, 0.377, 0.783)
             # キーボード領域外をタップで入力を確定させる
-            self.long_tap(driver, 0.9, 0.391, 200)
+            self.long_tap(driver, 0.9, 0.165, 200)
             self.save_screenshot_with_date(driver, "cart_177.png")
         
         except Exception as e:
@@ -106,7 +106,7 @@ class Cart(CommonCommand):
             self.swipe_vertical(driver, 800, Direction.UP.value, WaitTime.SHORT.value)
             self.swipe_vertical(driver, 800, Direction.UP.value, WaitTime.SHORT.value)
             #「いっしょお得対象」をタップする
-            self.long_tap(driver, 0.691, 0.742, 200)
+            self.long_tap(driver, 0.129, 0.689, 200)
             self.save_screenshot_with_date(driver, "cart_194.png")
             self.tap_button(driver, self.HEADER_CLOSE)
             self.save_screenshot_with_date(driver, "cart_195.png")
@@ -274,7 +274,7 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_264.png")
 
             # モーダルを閉じる
-            self.tap_anywhere(driver, 0.5, 0.572)
+            self.tap_anywhere(driver, 0.5, 0.616)
             self.save_screenshot_with_date(driver, "cart_266.png")
 
         except Exception as e:
@@ -305,8 +305,10 @@ class Cart(CommonCommand):
 
             # かごタブをタップする
             self.tap_button(driver, self.TAB_CART)
-            self.save_screenshot_with_date(driver, "cart_272.png")
+            self.save_screenshot_with_date(driver, "cart_271.png")
 
+            self.tap_anywhere(driver, 0.5, 0.616)
+            self.save_screenshot_with_date(driver, "cart_272.png")
 
 
 
@@ -323,7 +325,7 @@ class Cart(CommonCommand):
             self.long_tap(driver, 0.498, 0.538, 200)
             self.save_screenshot_with_date(driver, "cart_274.png")
 
-            # かごタブをタップする
+            # 「X」をタップする
             self.tap_button(driver, self.HEADER_CLOSE)
             self.save_screenshot_with_date(driver, "cart_275.png")
 
@@ -340,15 +342,21 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_279.png")
 
             # 数字ボタンをタップする
-            # self.tap_button(driver, self.CALC_IF_CLEAR)
+            self.tap_button(driver, self.CALC_IF_CLEAR)
             self.tap_button(driver, "button0")
             self.tap_button(driver, "button7")
             self.tap_button(driver, "button8")
             self.tap_button(driver, "button9")
             self.tap_button(driver, "button4")
             self.tap_button(driver, "button5")
+            self.save_screenshot_with_date(driver, "cart_280-1.png")
+            self.tap_button(driver, self.CALC_IF_CLEAR)
             self.tap_button(driver, "button6")
-            self.save_screenshot_with_date(driver, "cart_280.png")
+            self.tap_button(driver, "button1")
+            self.tap_button(driver, "button2")
+            self.tap_button(driver, "button3")
+            self.save_screenshot_with_date(driver, "cart_280-2.png")
+
 
             # 「配列」をタップする
             self.tap_button(driver, self.CALC_IF_BUTTON_CHANGE)
@@ -362,8 +370,12 @@ class Cart(CommonCommand):
             self.tap_button(driver, "button3")
             self.tap_button(driver, "button4")
             self.tap_button(driver, "button5")
+            self.save_screenshot_with_date(driver, "cart_283-1.png")
             self.tap_button(driver, "button6")
-            self.save_screenshot_with_date(driver, "cart_283.png")
+            self.tap_button(driver, "button7")
+            self.tap_button(driver, "button8")
+            self.tap_button(driver, "button9")
+            self.save_screenshot_with_date(driver, "cart_283-2.png")
 
             # 「222」を入力する
             self.tap_button(driver, self.CALC_IF_CLEAR)
@@ -402,7 +414,7 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_293.png")
           
             # 「クチコミ」をタップする
-            self.tap_anywhere(driver, 0.395, 0.818)
+            self.tap_anywhere(driver, 0.366, 0.721)
             self.save_screenshot_with_date(driver, "cart_294.png")
 
             # 「x」をタップする

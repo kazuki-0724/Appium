@@ -1,6 +1,7 @@
 import sys
 import subprocess
 import threading
+from PyQt5.QtCore import QTimer
 
 from PyQt5.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout,
@@ -63,7 +64,7 @@ button_layout.setSpacing(28)
 
 # チェックボックスタイトルとpytestの-k引数用キーワードの対応リスト
 checkbox_titles = [
-    ("起動確認", "test_splash"),
+    ("スプラッシュ画面", "test_splash"),
     ("未ログイントップ画面", "test_no_login_top"),
     ("ログイン画面", "test_login"),
     ("企画回選択", "test_select_product_catalog"),
@@ -94,7 +95,7 @@ def run_pytest():
     def task():
         subprocess.run(cmd, cwd="c:/programs/GitHubWS/Appium/src")
         # メインスレッドでメッセージボックスを表示
-        app.postEvent(window, lambda: QMessageBox.information(window, "完了", "テストが完了しました。"))
+        QTimer.singleShot(0, lambda: QMessageBox.information(None, "完了", "テストが完了しました。"))
 
     threading.Thread(target=task, daemon=True).start()
 
