@@ -127,6 +127,9 @@ class ShoppingTab(CommonCommand):
 
     def do_sample_test(self, driver):
         try:
+            # カゴを空にする(商品のタップエリアを確定させるため)
+            self.clear_cart(driver)
+            
             # 赤バッチを消すために一度注文送信を行う
             self.tap_button(driver, self.TAB_CART)
             self.tap_button(driver, self.ORDER_CONFIRM)
@@ -135,7 +138,7 @@ class ShoppingTab(CommonCommand):
             self.tap_button(driver, self.CONTINUE_SHOPPING)
             self.tap_button(driver, self.PROCATALOG_SELECT)
             # 赤バッチが消えていることの確認
-            self.save_screenshot_with_date(driver, "shopping_tab_098.png")
+            self.save_screenshot_with_date(driver, "shopping_tab_98.png")
 
             # 任意の商品を追加する
             self.long_tap(driver, 0.870, 0.877, 200)
@@ -143,17 +146,26 @@ class ShoppingTab(CommonCommand):
 
             # カゴタブをタップ
             self.tap_button(driver, self.TAB_CART)
-            self.save_screenshot_with_date(driver, "shopping_tab_100.png",0)
+            self.save_screenshot_with_date(driver, "shopping_tab_103.png",0)
 
-            # 追加した商品の場所までスクロール
-            self.scroll_vertical(driver, 1821, Direction.DOWN.value, WaitTime.SHORT.value)
-            self.scroll_vertical(driver, 1677, Direction.DOWN.value, WaitTime.SHORT.value)
-            self.scroll_vertical(driver, 1743, Direction.DOWN.value, WaitTime.SHORT.value)
-            self.scroll_vertical(driver, 1743, Direction.DOWN.value, WaitTime.SHORT.value)
-
+            # さっき追加した商品を数量変更
+            # 数量欄をタップする
+            self.long_tap(driver, 0.9, 0.436, 200)
+            # キーボードの「5」をタップする
+            540,1738
+            self.tap_anywhere(driver, 0.500, 0.720)
+            # キーボード領域外をタップで入力を確定させる
+            self.long_tap(driver, 0.9, 0.165, 200)
+            self.save_screenshot_with_date(driver, "shopping_tab_104.png")
+            
 
             # 「買い物」タブをタップ
             self.tap_button(driver, self.TAB_SHOPPING)
+            
+            # TODO: 買い物タブタブで追加した商品の場所までスクロールさせる
+            self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.save_screenshot_with_date(driver, "shopping_tab_106.png")
+            
 
             self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
             self.scroll_vertical(driver, 1954, Direction.DOWN.value, WaitTime.SHORT.value)
@@ -163,13 +175,6 @@ class ShoppingTab(CommonCommand):
             self.long_tap(driver, 0.157, 0.345, 200)
 
             self.save_screenshot_with_date(driver, "shopping_tab_108.png")
-            
-
-
-
-
-
-
                     
         except Exception as e:
             print("エラー内容:", e)

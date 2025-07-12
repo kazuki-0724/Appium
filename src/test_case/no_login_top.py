@@ -11,7 +11,8 @@ class NoLoginTop(CommonCommand):
     CONTENTS = "contents_imageview"
     LEFT = "back_icon_imageview"
     RIGHT = "forward_icon_imageview"
-
+    GO_LOGIN = "goto_login_btn"
+    
     
     def do_test(self,driver):
         try:
@@ -38,6 +39,55 @@ class NoLoginTop(CommonCommand):
 
             self.tap_button(driver, NoLoginTop.LEFT, WaitTime.SHORT.value)
             self.save_screenshot_with_date(driver, "no_login_top_021.png")
+            
+            # 「アカウントを作成する」をタップする
+            self.tap_button(driver, NoLoginTop.CREATE_ACCOUNT, WaitTime.SHORT.value)
+            self.save_screenshot_with_date(driver, "no_login_top_022.png")
+            
+            # 「よくあるお問い合わせ」をタップする
+            self.long_tap(driver, 0.380, 0.793, 200)
+            self.save_screenshot_with_date(driver, "no_login_top_023-1.png")
+            self.long_tap(driver, 0.644, 0.615, 200)
+            self.save_screenshot_with_date(driver, "no_login_top_023-2.png")
+            
+            # 「X」をタップする
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "no_login_top_024.png")
+            
+            # 「組合員番号」をタップする
+            self.long_tap(driver, 0.168, 0.420, 200)
+            # 「5」をタップする
+            self.tap_anywhere(driver, 0.378, 0.784)
+            # 「電話番号」をタップする
+            self.long_tap(driver, 0.168, 0.568, 200)
+            #「5」をタップする　x10
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            self.tap_anywhere(driver, 0.378, 0.784)
+            # 領域外タップでキーボードを閉じる
+            self.long_tap(driver, 0.800, 0.568, 200)
+            
+            # 確認コードを送信する
+            self.long_tap(driver, 0.166, 0.814, 200)
+            self.save_screenshot_with_date(driver, "no_login_top_025.png")
+            
+            # キャンセルをタップする
+            self.long_tap(driver, 0.639, 0.609, 200)
+            self.save_screenshot_with_date(driver, "no_login_top_026.png")
+            
+            # 「←」をタップする
+            self.tap_button(driver, self.BACK)
+            self.save_screenshot_with_date(driver, "no_login_top_036.png")
+            
+            # 「ログインへ進む」をタップする
+            self.tap_button(driver, NoLoginTop.GO_LOGIN, WaitTime.SHORT.value)
 
         except Exception as e:
             print("エラー内容:", e)

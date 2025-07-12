@@ -65,7 +65,7 @@ class ItemSearch(CommonCommand):
 
             # 「検索」をタップ
             self.tap_button(driver, self.HEADER_SEARCH)
-            self.save_screenshot_with_date(driver, "item_search_155.png")
+            self.save_screenshot_with_date(driver, "item_search_156.png")
 
             # 履歴の一番下「果汁100%」をタップ
             self.tap_anywhere(driver, 0.142, 0.232)
@@ -117,7 +117,7 @@ class ItemSearch(CommonCommand):
 
             # 「検索」をタップする
             self.tap_button(driver, self.HEADER_SEARCH)
-            self.save_screenshot_with_date(driver, "item_search_159.png")
+            self.save_screenshot_with_date(driver, "item_search_160.png")
 
             # 「たまご」を入力して、検索を実行
             self.input_text(driver, ItemSearch.SEARCH_EDIT_TEXT, "たまご")
