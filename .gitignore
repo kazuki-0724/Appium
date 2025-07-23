@@ -9,6 +9,7 @@
 reports/generated/
 reports/screenshot/
 reports/bk/
+reports/dummy/
     
 # IDE / Editor
 .idea/
