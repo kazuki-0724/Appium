@@ -6,8 +6,6 @@
 .pytest_cache/
     
 # Reports
-reports/generated/
-reports/screenshot/
 reports/bk/
 reports/dummy/
     
