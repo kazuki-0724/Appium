@@ -11,7 +11,7 @@ current_folder = "../reports/screenshot"
 # 正解（期待値）スクリーンショット格納フォルダ
 collect_folder = "../reports/dummy"
 # テンプレートHTML（各テストケースごと）のリスト
-html_files = [f"../reports/template/report{i}.html" for i in range(1, 10)]
+html_files = [f"../reports/template/report{i}.html" for i in range(1, 11)]
 # 出力先ディレクトリ
 output_dir = "../reports/generated"
 # summary.htmlのパス
