@@ -84,7 +84,7 @@
 </head>
 <body>
     <header>
-        <h1>Auto Tester マニュアル</h1>
+        <h1>マニュアル</h1>
     </header>
     <main>
         <section>
@@ -106,8 +106,8 @@
         <section>
             <h2>2. テストコードの仕組み</h2>
             <p>
-                <strong>CommonCommand</strong>をベースクラスとして、基本操作（絶対座標・UI部品）を定義しています。<br>
-                各テストケースはこれらの基本操作を組み合わせて実現しています。
+                <strong>CommonCommand</strong>をベースクラスとして、基本操作（絶対座標・UI部品）を定義している<br>
+                各テストケースはこれらの基本操作を組み合わせて実現している
             </p>
             <ul>
                 <li>基本操作：絶対座標
@@ -127,14 +127,24 @@
             </ul>
         </section>
         <section>
-            <h2>3. テストの準備</h2>
+            <h2>3. テスト実施概要</h2>
+            <ol>
+                <li>Appiumサーバを起動する</li>
+                <li>テストケースを実行する（実行中は基本的に放置でOK）</li>
+                <li>実行結果からレポートを生成する</li>
+                <li><strong>レポートを確認して、NGだったケースのみ人間の目で確認する</strong></strong></li>
+            </ol>
+        </section>
+        <section>
+            <h2>4. テストの準備</h2>
             <ul>
                 <li>開発者オプションからUSBデバッグを有効化</li>
+                <li>開発者オプションからUIデモモードを有効化（時刻表示などの差分防止）</li>
                 <li>テストに使用する組合員についてデータの準備を行う</li>
             </ul>
         </section>
         <section>
-            <h2>4. テストの実行</h2>
+            <h2>5. テストの実行</h2>
             <ol>
                 <li>Appiumサーバを起動する<br>
                     <pre><code>appium --allow-insecure=adb_shell</code></pre>
@@ -148,39 +158,38 @@
             </ol>
         </section>
         <section>
-            <h2>5. テストケースの個別実行</h2>
-            <p>特定のテストメソッドのみ実行したい場合は、<code>-k</code>オプションを使います。</p>
+            <h2>6. テストケースの個別実行</h2>
+            <p>特定のテストメソッドのみ実行したい場合は、<code>-k</code>オプションを使う</p>
             <pre><code>pytest -s appium_palapp_test.py -k 実行したいテストのメソッド名</code></pre>
             <pre><code>pytest -s appium_palapp_test.py -k test_no_login_top</code></pre>
         </section>
         <section>
-            <h2>6. テストの評価（画像比較レポート生成）</h2>
+            <h2>7. テストの評価（画像比較レポート生成）</h2>
             <ol>
                 <li>評価処理を実行する<br>
                     <pre><code>python image_similarity.py</code></pre>
                 </li>
                 <li>テスト結果の確認
                     <ul>
-                        <li>各テストケースの結果は「reportN.html」にて確認できます。</li>
-                        <li>正しいテスト結果のスクリーンショットと実行結果のスクリーンショットをピクセル単位で比較します。</li>
+                        <li>各テストケースの結果は「reportN.html」にて確認可能</li>
+                        <li>正しいテスト結果のスクリーンショットと実行結果のスクリーンショットをピクセル単位で比較した結果が出力される</li>
                     </ul>
                 </li>
             </ol>
         </section>
         <section>
-            <h2>7. 画面構成と使い方（GUIの場合）</h2>
+            <h2>8. 【非推奨】画面構成と使い方（GUIの場合）</h2>
             <ul>
                 <li><strong>テストケース選択</strong>：右側のチェックボックスで実行したいテストを選択できます。</li>
                 <li><strong>テスト実行</strong>：選択したテストのみを実行します。</li>
                 <li><strong>レポート生成</strong>：画像比較によるレポートを生成します。</li>
                 <li>実行したいテストケースにチェックを入れ、<strong>テスト実行</strong>ボタンをクリックしてください。</li>
-                <li>テストが完了すると、完了メッセージが表示されます。</li>
                 <li>テスト後、<strong>レポート生成</strong>ボタンで画像比較レポートを生成できます。</li>
                 <li>レポートは <code>reports/generated/</code> フォルダにHTML形式で出力されます。</li>
             </ul>
         </section>
         <section>
-            <h2>8. Appium Inspectorの使い方</h2>
+            <h2>9. Appium Inspectorの使い方</h2>
             <ol>
                 <li>Appium Inspectorを起動</li>
                 <li>Desired Capabilitiesを入力（例: テストコードと同じ内容）</li>
@@ -191,12 +200,11 @@
         <section>
             <h2>注意事項</h2>
             <ul>
-                <li>テスト実行中はウィンドウが一時的に操作できなくなる場合があります。</li>
-                <li>PyQt5やpytestなどの必要なライブラリがインストールされていることを確認してください。</li>
-                <li>レポート生成には画像ファイルが必要です。テスト実行後に行ってください。</li>
+                <li>PyQt5やpytestなどの必要なライブラリがインストールされていることを確認</li>
+                <li>レポート生成には画像ファイルが必要。テスト実行後に行うこと。</li>
             </ul>
             <div class="note">
-                <strong>ヒント:</strong> テストやレポートの詳細は <a href="reports/generated/summary.html" style="color:#ffd600;">レポート概要</a> をご覧ください。
+                <strong>ヒント:</strong> テストやレポートの詳細は <a href="reports/generated/summary.html" style="color:#ffd600;">レポート概要</a> 
             </div>
         </section>
     </main>
