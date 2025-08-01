@@ -42,12 +42,18 @@ class MustReadModal(CommonCommand):
             self.save_screenshot_with_date(driver, "must_read_modal_123.png")
 
             # 領域外タップ
-            self.long_tap(driver, 0.880, 0.963,200)
+            self.tap_anywhere(driver, 0.990, 0.990)
             self.save_screenshot_with_date(driver, "must_read_modal_124.png")
 
             # チェックボックスをチェック
             self.tap_button(driver, self.CLOSE_BTN, WaitTime.SHORT.value)
             self.save_screenshot_with_date(driver, "must_read_modal_125.png")
+            
+            # 2つ目の必読
+            self.save_screenshot_with_date(driver, "must_read_modal_128.png")
+            
+            self.save_screenshot_with_date(driver, "must_read_modal_129.png")
+            self.tap_anywhere(driver, 0.500, 0.590)
             
         except Exception as e:
             print("エラー内容:", e)

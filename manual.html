@@ -149,10 +149,16 @@
                 <li>Appiumサーバを起動する<br>
                     <pre><code>appium --allow-insecure=adb_shell</code></pre>
                 </li>
-                <li>pytestコマンドでテストケースを実行する<br>
-                    <pre><code>pytest -s appium_palapp_test.py</code></pre>
+                <li>DB準備<br>
+                    <p>実施したいケースに応じて、事前にDBの準備を行う</p>
                 </li>
-                <li>GUIから実行する場合は以下のコマンド<br>
+                <li>pytestコマンドでテストケースを実行する(ブロック別に)
+                    <pre><code>pytest -s appium_palapp_test.py -k test_1st_bloc</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_2nd_bloc</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_3rd_bloc</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_4th_bloc</code></pre>
+                </li>
+                <li>【非推奨】GUIから実行する場合は以下のコマンド<br>
                     <pre><code>python run_pytest_gui.py</code></pre>
                 </li>
             </ol>

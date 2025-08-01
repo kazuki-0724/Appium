@@ -13,7 +13,7 @@ class Login(CommonCommand):
     def do_test(self,driver):
         try:
             # ログイン画面
-            self.tap_button(driver, Login.GO_LOGIN, WaitTime.SHORT.value)
+            #self.tap_button(driver, Login.GO_LOGIN, WaitTime.SHORT.value)
             self.save_screenshot_with_date(driver, "login_038.png")
             self.tap_anywhere(driver, 0.507, 0.207)
             self.save_screenshot_with_date(driver, "login_040.png")
@@ -38,10 +38,10 @@ class Login(CommonCommand):
             self.save_screenshot_with_date(driver, "login_049.png")
             self.tap_back_button(driver, WaitTime.SHORT.value)
 
-            self.input_text(driver, Login.ID, "9m10411", WaitTime.SHORT.value)
-            self.input_text(driver, Login.PASSWORD, "pal000", WaitTime.SHORT.value)
-            # self.input_text(driver, Login.ID, "7500007", WaitTime.SHORT.value)
-            # self.input_text(driver, Login.PASSWORD, "000000", WaitTime.SHORT.value)
+            # self.input_text(driver, Login.ID, "9m10411", WaitTime.SHORT.value)
+            # self.input_text(driver, Login.PASSWORD, "pal000", WaitTime.SHORT.value)
+            self.input_text(driver, Login.ID, "7500007", WaitTime.SHORT.value)
+            self.input_text(driver, Login.PASSWORD, "000000", WaitTime.SHORT.value)
             self.tap_button(driver, Login.LOGIN_BUTTON, WaitTime.SHORT.value)
 
         except Exception as e:

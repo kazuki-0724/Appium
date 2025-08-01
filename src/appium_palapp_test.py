@@ -31,48 +31,69 @@ def driver():
     driver.quit()
 
 
-# テストケース(先頭にtest_をつける)
-def test_all_case(driver):
+# 【事前準備】パルくる便プロモ・必読モーダルの準備をする
+def test_1st_block(driver):
     try:
-        print("\n#テスト開始######################################")
-
-        # スプラッシュ画面
-        Splash().do_test(driver)
-        # 必読モーダル
-        MustReadModal().do_test(driver)
-        # パルくる便プロモ
-        PalPromo().do_test(driver)
-        # 未ログイントップ
-        NoLoginTop().do_test(driver)
-        # アカウント設定
-        AccountCreate().do_test(driver)
-        # ログイン画面
-        Login().do_test(driver)
+        ans = input("パルくる便プロモ・必読モーダルの準備をしましたか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("パルくる便プロモ・必読モーダルの準備をしてから再度実行してください。")
+            return
+        # test_splash(driver)
+        test_no_login_top(driver)
+        test_login(driver)
         # 通知権限の許可（座標は端末により調整）
         CommonCommand().tap_anywhere(driver, 0.498, 0.550)
         time.sleep(3)
-        # 企画回選択
-        SelectProductCatalog().do_test(driver)
-        time.sleep(3)
-        # 買い物タブ
-        ShoppingTab().do_test(driver)
-        # 商品検索画面
-        ItemSearch().do_test(driver)
-        # カゴ画面
-        Cart().do_test(driver)
-        # 注文内容確認確認
-        OrderConfirm().do_test(driver)
-        # 送信完了画面
-        OrderComplete().do_test(driver)
-
-
-        print("\n#テスト終了######################################")
-    
+        test_select_product_catalog(driver)
+        test_must_read_modal(driver)
+        test_parukuru_promotion(driver)
+        switch_select_product_catalog(driver)
+        
     except Exception as e:
         print("エラー内容:", e)
 
 
-# 各テストケースを単独で実行するメソッド
+# 【事前準備】カゴを完全に空にしておく
+def test_2nd_block(driver):
+    try:
+        ans = input("カゴを空の状態にしましたか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("カゴを空にしてから再度実行してください。")
+            return
+        test_shopping_tab(driver)
+        test_item_search(driver)
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+# 【事前準備】カゴに「111」の商品だけにしておく
+def test_3rd_block(driver):
+    try:
+        ans = input("カゴの中は「111」の商品1つだけですか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("カゴない商品を「111」の商品のみにしてください")
+            return
+        test_cart(driver)
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+#  【事前準備】特になし
+def test_4th_block(driver):
+    try:
+        test_order_confirm(driver)
+        test_order_complete(driver)
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+
+
+
+################################################
+# 各テストケースを単独で実行するメソッド###########
+################################################
+
 def test_splash(driver):
     try:
         print("\n#スプラッシュ画面テスト開始######################################")
@@ -129,9 +150,18 @@ def test_login(driver):
 
 def test_select_product_catalog(driver):
     try:
-        print("\n#企画回選択テスト開始######################################")
+        print("\n#企画回選択(6月1回)テスト開始######################################")
         SelectProductCatalog().do_test(driver)
-        print("\n#企画回選択テスト終了######################################")
+        print("\n#企画回選択(6月1回)終了企画回選択######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def switch_select_product_catalog(driver):
+    try:
+        print("\n#企画回選択(6月1回⇒2回⇒1回)開始######################################")
+        SelectProductCatalog().do_test2(driver)
+        print("\n#企画回選択(6月1回⇒2回⇒1回)テスト終了######################################")
     except Exception as e:
         print("エラー内容:", e)
 
@@ -179,22 +209,3 @@ def test_order_complete(driver):
         print("\n#注文完了画面テスト終了######################################")
     except Exception as e:
         print("エラー内容:", e)
-
-
-def test_sample_case(driver):
-    try:
-        print("\n#サンプルテスト開始######################################")
-        OrderComplete().do_test(driver)
-        print("\n#サンプルテスト終了######################################")
-    
-    except Exception as e:
-        print("エラー内容:", e)
-
-
-
-
-
-
-
-
-

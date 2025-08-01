@@ -19,15 +19,15 @@ class Cart(CommonCommand):
 
     def do_test(self,driver):
         try:
-            # self.test_167_177(driver)
-            # self.test_178_195(driver)
-            # self.test_196_244(driver)
-            # self.test_245_266(driver)
-            # self.test_267_289(driver)
-            # self.test_290_320(driver)
-            # self.test_321_334(driver)
-             self.test_335_338(driver)
-            # self.test_359_374(driver)
+            self.test_167_177(driver)
+            self.test_178_195(driver)
+            self.test_196_244(driver)
+            self.test_245_266(driver)
+            self.test_267_289(driver)
+            self.test_290_320(driver)
+            self.test_321_334(driver)
+            self.test_335_338(driver)
+            self.test_359_374(driver)
 
 
         except Exception as e:
@@ -601,9 +601,11 @@ class Cart(CommonCommand):
 
             # 「この企画回で再表示しない」
             self.tap_button(driver, self.CONFIRM_CHECKBOX)
-
-
-            # 354-358
+            self.save_screenshot_with_date(driver, "cart_354-1.png")
+            
+            # 「x」をタップする
+            self.tap_button(driver, self.CLOSE_BTN_IN_MODAL)
+            self.save_screenshot_with_date(driver, "cart_354-2.png")
 
         except Exception as e:
             print("エラー内容:", e)
