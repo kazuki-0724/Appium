@@ -130,6 +130,7 @@
             <h2>3. テスト実施概要</h2>
             <ol>
                 <li>Appiumサーバを起動する</li>
+                <li>DBなどの事前準備</li>
                 <li>テストケースを実行する（実行中は基本的に放置でOK）</li>
                 <li>実行結果からレポートを生成する</li>
                 <li><strong>レポートを確認して、NGだったケースのみ人間の目で確認する</strong></strong></li>
@@ -139,18 +140,30 @@
             <h2>4. テストの準備</h2>
             <ul>
                 <li>開発者オプションからUSBデバッグを有効化</li>
-                <li>開発者オプションからUIデモモードを有効化（時刻表示などの差分防止）</li>
-                <li>テストに使用する組合員についてデータの準備を行う</li>
+                <li>開発者オプションからUIデモモードを有効化（スクリーンショットの差分防止）</li>
+                <li>すべての通知を停止させる（スクリーンショットの差分防止）</li>
+                <li>テストに使用する組合員について、必要であればブロック別でデータの準備を行う</li>
+                <li>
+                    【test_1st_block】アプリを初期状態にする（クリーンインストール、データ削除など）<br>
+                    【test_2nd_block】クリーンインストール後、ログイン済みの状態にする<br>
+                </li>
             </ul>
         </section>
         <section>
-            <h2>5. テストの実行</h2>
+            <h2>5. データの準備</h2>
+            <ul>
+                <li>【test_1st_block】必読モーダルを未読にする（チェック（有／無）両方未読にする）</li>
+                <li>【test_1st_block】パルくる便プロモーションを未読にする</li>
+                <li>【test_2nd_block】カゴを空にしておく</li>
+                <li>【test_3rd_block】レコメンドモーダルを未読にする</li>
+                <li>【test_3rd_block】カゴに注文番号「111」の商品を1つだけ追加しておく</li>
+            </ul>
+        </section>
+        <section>
+            <h2>6. テストの実行</h2>
             <ol>
                 <li>Appiumサーバを起動する<br>
                     <pre><code>appium --allow-insecure=adb_shell</code></pre>
-                </li>
-                <li>DB準備<br>
-                    <p>実施したいケースに応じて、事前にDBの準備を行う</p>
                 </li>
                 <li>pytestコマンドでテストケースを実行する(ブロック別に)
                     <pre><code>pytest -s appium_palapp_test.py -k test_1st_bloc</code></pre>
@@ -164,13 +177,13 @@
             </ol>
         </section>
         <section>
-            <h2>6. テストケースの個別実行</h2>
+            <h2>7. テストケースの個別実行</h2>
             <p>特定のテストメソッドのみ実行したい場合は、<code>-k</code>オプションを使う</p>
             <pre><code>pytest -s appium_palapp_test.py -k 実行したいテストのメソッド名</code></pre>
             <pre><code>pytest -s appium_palapp_test.py -k test_no_login_top</code></pre>
         </section>
         <section>
-            <h2>7. テストの評価（画像比較レポート生成）</h2>
+            <h2>8. テストの評価（画像比較レポート生成）</h2>
             <ol>
                 <li>評価処理を実行する<br>
                     <pre><code>python image_similarity.py</code></pre>
@@ -184,7 +197,7 @@
             </ol>
         </section>
         <section>
-            <h2>8. 【非推奨】画面構成と使い方（GUIの場合）</h2>
+            <h2>9. 【非推奨】画面構成と使い方（GUIの場合）</h2>
             <ul>
                 <li><strong>テストケース選択</strong>：右側のチェックボックスで実行したいテストを選択できます。</li>
                 <li><strong>テスト実行</strong>：選択したテストのみを実行します。</li>
@@ -195,7 +208,7 @@
             </ul>
         </section>
         <section>
-            <h2>9. Appium Inspectorの使い方</h2>
+            <h2>10. Appium Inspectorの使い方</h2>
             <ol>
                 <li>Appium Inspectorを起動</li>
                 <li>Desired Capabilitiesを入力（例: テストコードと同じ内容）</li>

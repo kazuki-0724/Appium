@@ -41,7 +41,7 @@ def test_1st_block(driver):
         # test_splash(driver)
         test_no_login_top(driver)
         test_login(driver)
-        # 通知権限の許可（座標は端末により調整）
+        # 通知権限の許可
         CommonCommand().tap_anywhere(driver, 0.498, 0.550)
         time.sleep(3)
         test_select_product_catalog(driver)
@@ -53,10 +53,10 @@ def test_1st_block(driver):
         print("エラー内容:", e)
 
 
-# 【事前準備】カゴを完全に空にしておく
+# 【事前準備】カゴを完全に空にしておく&&カタログ表示が初期状態 
 def test_2nd_block(driver):
     try:
-        ans = input("カゴを空の状態にしましたか？ (Y/N): ").strip().lower()
+        ans = input("カゴを空の状態にしましたか？ カタログ表示は初期状態ですか？(Y/N): ").strip().lower()
         if ans != 'y':
             print("カゴを空にしてから再度実行してください。")
             return
