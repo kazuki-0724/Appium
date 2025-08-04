@@ -42,10 +42,10 @@ class CommonCommand:
 
 
     # スクリーンショットを取得する関数
-    def save_screenshot_with_date(self, driver, filename="screenshot.png", wait_time=WaitTime.SHORT.value):
+    def save_screenshot_with_date(self, driver, filename="screenshot.png", directory="screenshot", wait_time=WaitTime.SHORT.value):
         time.sleep(wait_time)
         # 保存先を ../reports/screenshot に変更
-        folder = os.path.join("..", "reports", "screenshot")
+        folder = os.path.join("..", "reports", directory)
         if not os.path.exists(folder):
             os.makedirs(folder)
         # フォルダ内にスクリーンショットを保存

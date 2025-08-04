@@ -166,10 +166,10 @@
                     <pre><code>appium --allow-insecure=adb_shell</code></pre>
                 </li>
                 <li>pytestコマンドでテストケースを実行する(ブロック別に)
-                    <pre><code>pytest -s appium_palapp_test.py -k test_1st_bloc</code></pre>
-                    <pre><code>pytest -s appium_palapp_test.py -k test_2nd_bloc</code></pre>
-                    <pre><code>pytest -s appium_palapp_test.py -k test_3rd_bloc</code></pre>
-                    <pre><code>pytest -s appium_palapp_test.py -k test_4th_bloc</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_1st_block</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_2nd_block</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_3rd_block</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_4th_block</code></pre>
                 </li>
                 <li>【非推奨】GUIから実行する場合は以下のコマンド<br>
                     <pre><code>python run_pytest_gui.py</code></pre>
@@ -217,7 +217,14 @@
             </ol>
         </section>
         <section>
-            <h2>注意事項</h2>
+            <h2>10. モンキーテスト</h2>
+            <ol>
+                <li><pre><code>pytest -s appium_palapp_test.py -k test_monkey_test</code></pre></li>
+                <li><a href="reports/generated/monkey_test.html" style="color:#ffd600;">モンキーテストレポート</a></li>
+            </ol>
+        </section>
+        <section>
+            <h2>モンキーテスト</h2>
             <ul>
                 <li>PyQt5やpytestなどの必要なライブラリがインストールされていることを確認</li>
                 <li>レポート生成には画像ファイルが必要。テスト実行後に行うこと。</li>

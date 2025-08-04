@@ -16,6 +16,9 @@ from test_case.cart import Cart
 from test_case.order_confirm import OrderConfirm
 from test_case.order_complete import OrderComplete
 from common.common_command import CommonCommand
+from PIL import Image, ImageDraw
+import os
+import random
 
 
 @pytest.fixture
@@ -209,3 +212,71 @@ def test_order_complete(driver):
         print("\n#注文完了画面テスト終了######################################")
     except Exception as e:
         print("エラー内容:", e)
+        
+
+def test_monkey_test(driver):
+        """
+        モンキーのテストを実行する関数
+        """
+        cmd = CommonCommand()
+        try:
+            for i in range(10): # n回のモンキーテストを実行
+                x = random.uniform(0.1, 0.9)  # ランダムなX座標
+                y = random.uniform(0.1, 0.9)  # ランダ
+                cmd.save_screenshot_with_date(driver, filename=f"monkey_test_{i}_before.png", directory="monkey")
+                add_transparent_yellow_circle_with_red_center(
+                    f"monkey_test_{i}_before.png",
+                    center_x=int(x * driver.get_window_size()['width']),
+                    center_y=int(y * driver.get_window_size()['height'])
+                )
+                cmd.long_tap(driver, x, y, 200)
+                cmd.save_screenshot_with_date(driver, filename=f"monkey_test_{i}_after.png", directory="monkey")
+        
+        except Exception as e:
+            print("エラー内容:", e)
+            return
+
+
+def add_transparent_yellow_circle_with_red_center(input_path, center_x, center_y):
+        try:
+            # 画像をRGBAモードで開く
+            # 半透明の描画にはRGBAモードが必要
+            image = Image.open(os.path.join("../reports/monkey", input_path)).convert("RGBA")
+
+            # 描画用の透明なレイヤーを作成
+            # 元の画像と同じサイズとRGBAモードで、完全に透明な画像を作る
+            transparent_layer = Image.new("RGBA", image.size, (0, 0, 0, 0))
+            draw = ImageDraw.Draw(transparent_layer)
+
+            # 外側の黄色い半透明の丸を描画
+            # RGBA(255, 255, 0, 128) は「黄色で半透明」を意味する
+            blue_transparent = (0, 0, 200, 128) 
+        
+            # 描画する丸のバウンディングボックスを計算
+            outer_bbox = [
+                (center_x - 30, center_y - 30),
+                (center_x + 30, center_y + 30)
+            ]
+            draw.ellipse(outer_bbox, fill=blue_transparent)
+        
+            # 内側の赤い丸を描画
+            red = (255, 0, 0, 255) # 赤色で完全に不透明
+            inner_bbox = [
+                (center_x - 5, center_y - 5),
+                (center_x + 5, center_y + 5)
+            ]
+            draw.ellipse(inner_bbox, fill=red)
+
+            # 元の画像の上に透明なレイヤーを合成
+            # `Image.alpha_composite`で透明度を考慮して合成する
+            result_image = Image.alpha_composite(image, transparent_layer)
+        
+            # 最終的な画像をPNG形式で保存
+            # PNGは透明度をサポートしているため推奨
+            result_image.save(os.path.join("../reports/monkey", input_path), "PNG")
+            print(f"画像が /reports/monkey/{input_path} に保存されました。")
+
+        except FileNotFoundError:
+            print(f"エラー: 指定されたファイルが見つかりません - {input_path}")
+        except Exception as e:
+            print(f"エラーが発生しました: {e}")
