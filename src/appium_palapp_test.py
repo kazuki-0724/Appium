@@ -76,13 +76,25 @@ def test_3rd_block(driver):
         if ans != 'y':
             print("カゴない商品を「111」の商品のみにしてください")
             return
-        test_cart(driver)
+        test_cart1(driver)
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+# 【事前準備】「test_3rd_block」を事前に実行しておく
+def test_4th_block(driver):
+    try:
+        ans = input("事前に「test_3rd_block」を実行していますか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("事前に「test_3rd_block」を実行してください")
+            return
+        test_cart2(driver)
     except Exception as e:
         print("エラー内容:", e)
 
 
 #  【事前準備】特になし
-def test_4th_block(driver):
+def test_5th_block(driver):
     try:
         test_order_confirm(driver)
         test_order_complete(driver)
@@ -187,11 +199,20 @@ def test_item_search(driver):
         print("エラー内容:", e)
 
 
-def test_cart(driver):
+def test_cart1(driver):
     try:
-        print("\n#カゴ画面テスト開始######################################")
-        Cart().do_test(driver)
-        print("\n#カゴ画面テスト終了######################################")
+        print("\n#カゴ画面テスト1開始######################################")
+        Cart().do_test1(driver)
+        print("\n#カゴ画面テスト1終了######################################")
+    except Exception as e:
+        print("エラー内容:", e)
+
+
+def test_cart2(driver):
+    try:
+        print("\n#カゴ画面テスト2開始######################################")
+        Cart().do_test2(driver)
+        print("\n#カゴ画面テスト2終了######################################")
     except Exception as e:
         print("エラー内容:", e)
 
