@@ -166,7 +166,7 @@
                 <li>Appiumサーバを起動する<br>
                     <pre><code>appium --allow-insecure=adb_shell</code></pre>
                 </li>
-                <li>pytestコマンドでテストケースを実行する(ブロック別 ※4th実施したい場合は3rdを事前に実行しておく)
+                <li>pytestコマンドでテストケースを実行する(基本的にはブロック別 ※4th実施したい場合は3rdを事前に実行しておく)
                     <pre><code>pytest -s appium_palapp_test.py -k test_1st_block</code></pre>
                     <pre><code>pytest -s appium_palapp_test.py -k test_2nd_block</code></pre>
                     <pre><code>pytest -s appium_palapp_test.py -k test_3rd_block</code></pre>
