@@ -17,18 +17,24 @@ class Cart(CommonCommand):
     CONFIRM_CHECKBOX = "confirm_checkbox_text"
 
 
-    def do_test(self,driver):
+    def do_test1(self,driver):
         try:
             self.test_167_177(driver)
             self.test_178_195(driver)
             self.test_196_244(driver)
             self.test_245_266(driver)
+
+        except Exception as e:
+            print("エラー内容:", e)
+
+
+    def do_test2(self,driver):
+        try:
             self.test_267_289(driver)
             self.test_290_320(driver)
             self.test_321_334(driver)
             self.test_335_338(driver)
             self.test_359_374(driver)
-
 
         except Exception as e:
             print("エラー内容:", e)
@@ -123,7 +129,7 @@ class Cart(CommonCommand):
         try:
             #【電卓並び】
             self.tap_button(driver, self.CALC_IF)
-            self.tap_button(driver, self.CALC_IF_CLEAR)
+            # self.tap_button(driver, self.CALC_IF_CLEAR)
             self.save_screenshot_with_date(driver, "cart_196.png")
             
             # 「1」を入力する
@@ -351,7 +357,7 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_279.png")
 
             # 数字ボタンをタップする
-            self.tap_button(driver, self.CALC_IF_CLEAR)
+            # self.tap_button(driver, self.CALC_IF_CLEAR)
             self.tap_button(driver, "button0")
             self.tap_button(driver, "button7")
             self.tap_button(driver, "button8")

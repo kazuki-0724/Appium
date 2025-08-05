@@ -155,8 +155,9 @@
                 <li>【test_1st_block】必読モーダルを未読にする（チェック（有／無）両方未読にする）</li>
                 <li>【test_1st_block】パルくる便プロモーションを未読にする</li>
                 <li>【test_2nd_block】カゴを空にしておく</li>
-                <li>【test_3rd_block】レコメンドモーダルを未読にする</li>
                 <li>【test_3rd_block】カゴに注文番号「111」の商品を1つだけ追加しておく</li>
+                <li>【test_3rd_block】レコメンドモーダルを未読にする</li>
+                <li>【test_4th_block】事前に【test_3rd_block】を実行しておく</li>
             </ul>
         </section>
         <section>
@@ -170,6 +171,7 @@
                     <pre><code>pytest -s appium_palapp_test.py -k test_2nd_block</code></pre>
                     <pre><code>pytest -s appium_palapp_test.py -k test_3rd_block</code></pre>
                     <pre><code>pytest -s appium_palapp_test.py -k test_4th_block</code></pre>
+                    <pre><code>pytest -s appium_palapp_test.py -k test_5th_block</code></pre>
                 </li>
                 <li>【非推奨】GUIから実行する場合は以下のコマンド<br>
                     <pre><code>python run_pytest_gui.py</code></pre>
