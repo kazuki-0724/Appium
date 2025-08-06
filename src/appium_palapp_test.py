@@ -37,9 +37,9 @@ def driver():
 # 【事前準備】パルくる便プロモ・必読モーダルの準備をする
 def test_1st_block(driver):
     try:
-        ans = input("パルくる便プロモ・必読モーダルの準備をしましたか？ (Y/N): ").strip().lower()
+        ans = input("パルくる便プロモ・必読モーダル・カゴは空・赤バッチ無しの状態ですか？ (Y/N): ").strip().lower()
         if ans != 'y':
-            print("パルくる便プロモ・必読モーダルの準備をしてから再度実行してください。")
+            print("準備をしてから再度実行してください。")
             return
         # test_splash(driver)
         test_no_login_top(driver)
@@ -72,9 +72,9 @@ def test_2nd_block(driver):
 # 【事前準備】カゴに「111」の商品だけにしておく
 def test_3rd_block(driver):
     try:
-        ans = input("カゴの中は「111」の商品1つだけですか？ (Y/N): ").strip().lower()
+        ans = input("カゴの中は「299」の商品1つだけですか？ (Y/N): ").strip().lower()
         if ans != 'y':
-            print("カゴない商品を「111」の商品のみにしてください")
+            print("カゴ商品を「299」の商品のみにしてください")
             return
         test_cart1(driver)
     except Exception as e:

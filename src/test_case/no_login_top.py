@@ -46,9 +46,9 @@ class NoLoginTop(CommonCommand):
             
             # 「よくあるお問い合わせ」をタップする
             self.long_tap(driver, 0.380, 0.793, 200)
-            self.save_screenshot_with_date(driver, "no_login_top_023-1.png")
+            #self.save_screenshot_with_date(driver, "no_login_top_023.png")
             self.long_tap(driver, 0.644, 0.615, 200)
-            self.save_screenshot_with_date(driver, "no_login_top_023-2.png")
+            self.save_screenshot_with_date(driver, "no_login_top_023.png")
             
             # 「X」をタップする
             self.tap_button(driver, self.HEADER_CLOSE)

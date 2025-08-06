@@ -35,11 +35,11 @@ class AccountCreate(CommonCommand):
             self.long_tap(driver, 0.841, 0.579, 100)
             # 「電話番号確認用コードを送信する」をタップ
             self.long_tap(driver, 0.374, 0.807, 100)
+            self.save_screenshot_with_date(driver, "account_create_025.png")
             # ダイアログ「キャンセル」をタップ（ネイティブのため絶対座標）
             self.long_tap(driver, 0.649, 0.606, 100)
-            self.save_screenshot_with_date(driver, "account_create_028.png")
+            self.save_screenshot_with_date(driver, "account_create_026.png")
             self.tap_back_button(driver,WaitTime.SHORT.value)
-
 
         except Exception as e:
             print("エラー内容:", e)

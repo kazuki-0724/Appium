@@ -37,6 +37,7 @@ class SelectProductCatalog(CommonCommand):
             # 6月1回に企画回を変更
             self.tap_anywhere(driver, 0.491, 0.340)
             self.tap_button(driver, self.SELECT_BUTTON)
+            self.save_screenshot_with_date(driver, "select_product_catalog_060.png")
             
         except Exception as e:
             print("エラー内容:", e)
