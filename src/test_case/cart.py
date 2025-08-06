@@ -34,7 +34,7 @@ class Cart(CommonCommand):
             self.test_290_320(driver)
             self.test_321_334(driver)
             self.test_335_338(driver)
-            self.test_359_374(driver)
+            # self.test_359_374(driver)
 
         except Exception as e:
             print("エラー内容:", e)
@@ -105,12 +105,25 @@ class Cart(CommonCommand):
 
 
             # 【お気に入り商品】
-
+            608, 670
+            # 「自動カゴ追加設定」をタップする
+            self.long_tap(driver, 0.562, 0.277, 200)
+            self.save_screenshot_with_date(driver, "cart_188.png")
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_189.png")
+            # 「一覧へ」をタップする
+            self.long_tap(driver, 0.873, 0.277, 200)
+            self.save_screenshot_with_date(driver, "cart_190.png")
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_191.png")
 
             # 【お買い忘れはありませんか】
+            # 「一覧へ」をタップする
+            self.long_tap(driver, 0.873, 0.596, 200)
+            self.save_screenshot_with_date(driver, "cart_192.png")
+            self.tap_button(driver, self.HEADER_CLOSE)
+            self.save_screenshot_with_date(driver, "cart_193.png")
 
-
-            #【お買い忘れはありませんか】
             # ページ最下部まで移動させる
             self.swipe_vertical(driver, 800, Direction.UP.value, WaitTime.SHORT.value)
             self.swipe_vertical(driver, 800, Direction.UP.value, WaitTime.SHORT.value)
@@ -178,10 +191,6 @@ class Cart(CommonCommand):
             self.tap_button(driver, self.CALC_IF_ADD)
             self.save_screenshot_with_date(driver, "cart_228.png")
             
-            # クチコミを閉じる（228次第）
-            self.tap_button(driver, self.HEADER_CLOSE)
-            self.tap_button(driver, self.CALC_IF_CLEAR)
-
             # 「1905」を入力する
             self.tap_button(driver, "button1")
             self.tap_button(driver, "button9")
