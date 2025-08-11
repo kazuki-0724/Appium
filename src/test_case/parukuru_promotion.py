@@ -27,6 +27,7 @@ class PalPromo(CommonCommand):
 
             # 「対象商品一覧・登録管理」をタップ
             self.tap_button(driver, self.FOOTER_BTN, WaitTime.SHORT.value)
+            self.sleep(WaitTime.SHORT.value)
             self.save_screenshot_with_date(driver, "pal_promo_136.png")
 
             # 買い物タブをタップ

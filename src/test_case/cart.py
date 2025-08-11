@@ -395,6 +395,7 @@ class Cart(CommonCommand):
             self.tap_button(driver, "button4")
             self.tap_button(driver, "button5")
             self.save_screenshot_with_date(driver, "cart_283-1.png")
+            self.tap_button(driver, self.CALC_IF_CLEAR)
             self.tap_button(driver, "button6")
             self.tap_button(driver, "button7")
             self.tap_button(driver, "button8")
@@ -425,6 +426,8 @@ class Cart(CommonCommand):
         try:
             # 【商品詳細画面】
             # 「111」の商品画像をタップ
+            self.tap_button(driver, self.CALC_IF_CLOSE)
+            self.tap_button(driver, self.TAB_CART)
             self.long_tap(driver, 0.121, 0.364, 200)
             self.save_screenshot_with_date(driver, "cart_291.png")
 
@@ -519,13 +522,17 @@ class Cart(CommonCommand):
             # 一度カゴを空にして「101」の商品を一つだけ追加する
             self.clear_cart(driver)
             self.tap_button(driver, self.CALC_IF)
+            self.tap_button(driver, self.CALC_IF_ITEM_NO)
+            self.tap_button(driver, self.CALC_IF_CLEAR)
             self.tap_button(driver, "button1")
             self.tap_button(driver, "button0")
             self.tap_button(driver, "button1")
             self.tap_button(driver, self.CALC_IF_ADD)
             
             # 「101」の商品を削除する
-            self.tap_anywhere(driver, 0.673, 0.944)
+            self.tap_button(driver, self.CALC_IF_CLOSE)
+            self.tap_button(driver, self.TAB_CART)
+            self.tap_anywhere(driver, 847/1080, 999/2412)
             self.save_screenshot_with_date(driver, "cart_324.png")
             
             # 買い物タブをタップする
@@ -537,7 +544,8 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_327.png")
             
             # 「101」の数量欄をタップする
-            self.long_tap(driver, 0.9, 0.436, 200)
+            self.long_tap(driver, 443/1080, 924/2412, 200)
+            self.long_tap(driver, 0.9, 1000/2412, 200)
             # キーボードの「←（削除）」をタップする
             self.tap_anywhere(driver, 0.871, 0.846)
             # キーボード領域外をタップで入力を確定させる
@@ -559,7 +567,6 @@ class Cart(CommonCommand):
             # キーボード領域外をタップで入力を確定させる
             self.long_tap(driver, 0.9, 0.165, 200)
             self.save_screenshot_with_date(driver, "cart_334.png")
-
 
         except Exception as e:
             print("エラー内容:", e)
@@ -603,7 +610,7 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_349.png")
 
             # 商品名をタップする
-            self.tap_anywhere(driver, 0.296, 0.269)
+            self.tap_anywhere(driver, 300/1080, 585/2412)
             self.save_screenshot_with_date(driver, "cart_350.png")
 
             # 「カゴへ」をタップする
@@ -621,6 +628,10 @@ class Cart(CommonCommand):
             # 「x」をタップする
             self.tap_button(driver, self.CLOSE_BTN_IN_MODAL)
             self.save_screenshot_with_date(driver, "cart_354-2.png")
+            
+            # 「注文へ進む」をタップする
+            self.tap_button(driver, self.ORDER_CONFIRM)
+            self.save_screenshot_with_date(driver, "cart_359.png")
 
         except Exception as e:
             print("エラー内容:", e)

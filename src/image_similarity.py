@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 # テスト実行時のスクリーンショット格納フォルダ
 current_folder = "../reports/screenshot"
 # 正解（期待値）スクリーンショット格納フォルダ
-collect_folder = "../reports/dummy"
+collect_folder = "../reports/evidence"
 # テンプレートHTML（各テストケースごと）のリスト
 html_files = [f"../reports/template/report{i}.html" for i in range(1, 11)]
 # 出力先ディレクトリ

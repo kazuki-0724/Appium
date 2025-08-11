@@ -14,8 +14,11 @@ class ShoppingTab(CommonCommand):
     def do_test(self,driver):
         try:
             # 買い物タブ
-            self.tap_button(driver, self.HEADER_CATALOG)
+            self.tap_button(driver, self.TAB_SHOPPING)
             self.save_screenshot_with_date(driver, "shopping_tab_062.png")
+            
+            self.tap_button(driver, self.HEADER_CATALOG)
+            self.save_screenshot_with_date(driver, "shopping_tab_067.png")
 
             # 左上のカタログをタップ（座標は端末により調整）
             self.tap_anywhere(driver, 0.250, 0.309)
@@ -29,7 +32,7 @@ class ShoppingTab(CommonCommand):
             self.tap_anywhere(driver, 0.748, 0.729)
             # 「はじめる」をタップ
             self.tap_anywhere(driver, 0.748, 0.729)
-            self.save_screenshot_with_date(driver, "shopping_tab_066.png")
+            self.save_screenshot_with_date(driver, "shopping_tab_069.png")
 
             # カタログの「＞」をタップ（次ページに移動）
             self.tap_anywhere(driver, 0.908, 0.871)
@@ -88,7 +91,16 @@ class ShoppingTab(CommonCommand):
             self.swipe_vertical(driver, 800, Direction.UP.value, WaitTime.SHORT.value)
             self.save_screenshot_with_date(driver, "shopping_tab_086.png")
 
-            # 86,87,88,89が無理
+            # 86,87が無理
+            # 一度一番上に戻る
+            self.tap_button(driver, self.HEADER_CATEGORY, WaitTime.SHORT.value)
+            self.scroll_vertical(driver, 927, Direction.DOWN.value, WaitTime.SHORT.value)
+            # 「新商品・今回限り」をタップする
+            self.long_tap(driver, 0.150, 0.733, 200)
+            self.save_screenshot_with_date(driver, "shopping_tab_088.png")
+            # 「<」をタップする
+            self.tap_back_button(driver)
+            self.save_screenshot_with_date(driver, "shopping_tab_089.png")
 
 
             self.tap_button(driver, self.TAB_CART)
@@ -120,61 +132,53 @@ class ShoppingTab(CommonCommand):
 
             self.tap_button(driver, self.TAB_SHOPPING)
             self.save_screenshot_with_date(driver, "shopping_tab_097.png")
-
-        except Exception as e:
-            print("エラー内容:", e)
-
-
-    def do_sample_test(self, driver):
-        try:
+            
+            
             # カゴを空にする(商品のタップエリアを確定させるため)
-            self.clear_cart(driver)
+            # self.clear_cart(driver)
             
             # 赤バッチを消すために一度注文送信を行う
-            self.tap_button(driver, self.TAB_CART)
-            self.tap_button(driver, self.ORDER_CONFIRM)
-            self.tap_button(driver, self.ORDER_CONFIRM_IN_REC_MODAL)
-            self.tap_button(driver, self.ORDER_COMPLETE)
-            self.tap_button(driver, self.CONTINUE_SHOPPING)
-            self.tap_button(driver, self.PROCATALOG_SELECT)
-            # 赤バッチが消えていることの確認
-            self.save_screenshot_with_date(driver, "shopping_tab_98.png")
+            # self.tap_button(driver, self.TAB_CART)
+            # self.tap_button(driver, self.ORDER_CONFIRM)
+            # self.tap_button(driver, self.ORDER_COMPLETE)
+            # self.tap_button(driver, self.CONTINUE_SHOPPING)
+            # self.tap_button(driver, self.PROCATALOG_SELECT)
+            # # 赤バッチが消えていることの確認
+            # self.save_screenshot_with_date(driver, "shopping_tab_98.png")
 
-            # 任意の商品を追加する
-            self.long_tap(driver, 0.870, 0.877, 200)
-            self.save_screenshot_with_date(driver, "shopping_tab_100.png")
+            # 任意の商品（雪降る丘のクリスマスケーキセット）を追加する
+            # self.long_tap(driver, 0.870, 1519/2412, 200)
+            # self.save_screenshot_with_date(driver, "shopping_tab_100.png")
 
             # カゴタブをタップ
-            self.tap_button(driver, self.TAB_CART)
-            self.save_screenshot_with_date(driver, "shopping_tab_103.png",0)
+            # self.tap_button(driver, self.TAB_CART)
+            # self.save_screenshot_with_date(driver, "shopping_tab_103.png")
 
             # さっき追加した商品を数量変更
             # 数量欄をタップする
-            self.long_tap(driver, 0.9, 0.436, 200)
+            # self.long_tap(driver, 0.9, 0.436, 200)
             # キーボードの「5」をタップする
-            540,1738
-            self.tap_anywhere(driver, 0.500, 0.720)
+            # self.tap_anywhere(driver, 0.500, 0.720)
             # キーボード領域外をタップで入力を確定させる
-            self.long_tap(driver, 0.9, 0.165, 200)
-            self.save_screenshot_with_date(driver, "shopping_tab_104.png")
+            # self.long_tap(driver, 0.9, 0.165, 200)
+            # self.save_screenshot_with_date(driver, "shopping_tab_104.png")
             
 
             # 「買い物」タブをタップ
-            self.tap_button(driver, self.TAB_SHOPPING)
+            # self.tap_button(driver, self.TAB_SHOPPING)
             
             # TODO: 買い物タブタブで追加した商品の場所までスクロールさせる
-            self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
-            self.save_screenshot_with_date(driver, "shopping_tab_106.png")
+            # self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
+            # self.save_screenshot_with_date(driver, "shopping_tab_106.png")
             
-
-            self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
-            self.scroll_vertical(driver, 1954, Direction.DOWN.value, WaitTime.SHORT.value)
-            self.scroll_vertical(driver, 1702, Direction.DOWN.value, WaitTime.SHORT.value)
+            # self.scroll_vertical(driver, 1921, Direction.DOWN.value, WaitTime.SHORT.value)
+            # self.scroll_vertical(driver, 1954, Direction.DOWN.value, WaitTime.SHORT.value)
+            # self.scroll_vertical(driver, 1702, Direction.DOWN.value, WaitTime.SHORT.value)
 
             # 「【view=pochiなし】同窓遷移」をタップ
-            self.long_tap(driver, 0.157, 0.345, 200)
+            # self.long_tap(driver, 0.157, 0.345, 200)
 
-            self.save_screenshot_with_date(driver, "shopping_tab_108.png")
-                    
+            # self.save_screenshot_with_date(driver, "shopping_tab_108.png")
+
         except Exception as e:
             print("エラー内容:", e)

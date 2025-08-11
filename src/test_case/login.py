@@ -42,6 +42,7 @@ class Login(CommonCommand):
             # self.input_text(driver, Login.PASSWORD, "pal000", WaitTime.SHORT.value)
             self.input_text(driver, Login.ID, "7500007", WaitTime.SHORT.value)
             self.input_text(driver, Login.PASSWORD, "000000", WaitTime.SHORT.value)
+            self.save_screenshot_with_date(driver, "login_056-1.png")
             self.tap_button(driver, Login.LOGIN_BUTTON, WaitTime.SHORT.value)
 
         except Exception as e:

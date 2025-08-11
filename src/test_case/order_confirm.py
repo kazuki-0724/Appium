@@ -17,14 +17,15 @@ class OrderConfirm(CommonCommand):
             # 【画面制御】
             # 「←」をタップする
             self.tap_back_button(driver)
-            self.tap_button(driver, self.ORDER_CONFIRM)
             self.save_screenshot_with_date(driver, "order_confirm_377.png")
 
             # 増資の「？」をタップする
+            self.tap_button(driver, self.ORDER_CONFIRM)
             self.long_tap(driver, 0.158, 0.435, 200)
             self.save_screenshot_with_date(driver, "order_confirm_379.png")
 
             # 「X」をタップする
+            self.sleep(WaitTime.LONG.value)
             self.tap_close_button(driver)
             self.save_screenshot_with_date(driver, "order_confirm_380.png")
 
@@ -90,7 +91,7 @@ class OrderConfirm(CommonCommand):
             self.save_screenshot_with_date(driver, "order_confirm_392.png")
             
             # 100Pの数量を「10」に設定する
-            self.long_tap(driver, 0.710, 0.380, 300)
+            self.long_tap(driver, 0.710, 815/2412, 200)
             # 「1」をタップする
             self.tap_anywhere(driver, 0.137, 0.721)
             # 「0」をタップする
@@ -112,7 +113,7 @@ class OrderConfirm(CommonCommand):
             self.save_screenshot_with_date(driver, "order_confirm_395.png")
             
             # 100Pの数量を「10」に設定する
-            self.long_tap(driver, 0.710, 0.380, 300)
+            self.long_tap(driver, 0.710, 815/2412, 200)
             # 「1」をタップする
             self.tap_anywhere(driver, 0.137, 0.721)
             # 「0」をタップする
@@ -129,7 +130,7 @@ class OrderConfirm(CommonCommand):
             self.save_screenshot_with_date(driver, "order_confirm_398.png")
             
             # 100Pの数量を「10」に設定する
-            self.long_tap(driver, 0.710, 0.380, 300)
+            self.long_tap(driver, 0.710, 815/2412, 200)
             # 「1」をタップする
             self.tap_anywhere(driver, 0.137, 0.721)
             # 「0」をタップする

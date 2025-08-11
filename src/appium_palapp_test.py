@@ -33,18 +33,32 @@ def driver():
     yield driver
     driver.quit()
 
+################################################
+# 各テストケースをブロック単位で実行するメソッド####
+################################################
 
-# 【事前準備】パルくる便プロモ・必読モーダルの準備をする
+def prepare_cart_status():
+    ans = input("6月1回・2回でカゴは共に空で赤バッチは無しですか？ (Y/N): ").strip().lower()
+    if ans != 'y':
+        print("カゴの状態を確認してください。")
+        return False
+    return True
+
+
 def test_1st_block(driver):
     try:
-        ans = input("パルくる便プロモ・必読モーダル・カゴは空・赤バッチ無しの状態ですか？ (Y/N): ").strip().lower()
+        if not prepare_cart_status():
+            return
+        
+        ans = input("パルくる便プロモ・必読モーダルの準備はしましたか？ (Y/N): ").strip().lower()
         if ans != 'y':
-            print("準備をしてから再度実行してください。")
+            print("データ準備をしてください。")
             return
         # test_splash(driver)
         test_no_login_top(driver)
         test_login(driver)
         # 通知権限の許可
+        CommonCommand().save_screenshot_with_date(driver, "shopping_tab_063.png")
         CommonCommand().tap_anywhere(driver, 0.498, 0.550)
         time.sleep(3)
         test_select_product_catalog(driver)
@@ -56,12 +70,14 @@ def test_1st_block(driver):
         print("エラー内容:", e)
 
 
-# 【事前準備】カゴを完全に空にしておく&&カタログ表示が初期状態 
 def test_2nd_block(driver):
     try:
-        ans = input("カゴを空の状態にしましたか？ カタログ表示は初期状態ですか？(Y/N): ").strip().lower()
+        if not prepare_cart_status():
+            return
+        
+        ans = input("アプリを（クリーンインストール／データ消去）後、ログインのみした状態ですか？(Y/N): ").strip().lower()
         if ans != 'y':
-            print("カゴを空にしてから再度実行してください。")
+            print("アプリを（クリーンインストール／データ消去）後、ログインのみした状態にしてください。")
             return
         test_shopping_tab(driver)
         test_item_search(driver)
@@ -69,7 +85,6 @@ def test_2nd_block(driver):
         print("エラー内容:", e)
 
 
-# 【事前準備】カゴに「111」の商品だけにしておく
 def test_3rd_block(driver):
     try:
         ans = input("カゴの中は「299」の商品1つだけですか？ (Y/N): ").strip().lower()
@@ -81,21 +96,35 @@ def test_3rd_block(driver):
         print("エラー内容:", e)
 
 
-# 【事前準備】「test_3rd_block」を事前に実行しておく
 def test_4th_block(driver):
     try:
         ans = input("事前に「test_3rd_block」を実行していますか？ (Y/N): ").strip().lower()
         if ans != 'y':
             print("事前に「test_3rd_block」を実行してください")
             return
+        ans = input("レコメンドモーダルは表示される状態ですか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("レコメンドモーダルを表示される状態にしてください")
+            return
         test_cart2(driver)
     except Exception as e:
         print("エラー内容:", e)
 
 
-#  【事前準備】特になし
 def test_5th_block(driver):
     try:
+        if not prepare_cart_status():
+            return
+        
+        ans = input("カゴタブに遷移していますか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("カゴタブに遷移してください")
+            return
+        
+        ans = input("「増資」「ポイント」を0にしていますか？ (Y/N): ").strip().lower()
+        if ans != 'y':
+            print("「増資」「ポイント」を0にしてから再度実行してください")
+            return
         test_order_confirm(driver)
         test_order_complete(driver)
     except Exception as e:
