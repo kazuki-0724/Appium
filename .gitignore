@@ -9,6 +9,7 @@ __pycache__/
 # Reports
 reports/bk/
 reports/dummy/
+reports/screenshot/
     
 # IDE / Editor
 .idea/

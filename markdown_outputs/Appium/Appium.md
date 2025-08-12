@@ -1,271 +1,0 @@
-# ディレクトリ: Appium
-
----
-
-### ファイル: Appium/manual.html
-
-```html
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=800, initial-scale=1.0">
-    <title>Auto Tester マニュアル</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            background: linear-gradient(120deg, #232526 0%, #414345 100%);
-            color: #f5f5f5;
-            font-family: 'Meiryo', 'Yu Gothic', 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #00adb5;
-            color: #fff;
-            padding: 32px 0 16px 0;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.4rem;
-            letter-spacing: 0.1em;
-        }
-        main {
-            max-width: 900px;
-            margin: 32px auto 0 auto;
-            background: rgba(34, 40, 49, 0.95);
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-            padding: 32px 40px 24px 40px;
-        }
-        h2 {
-            color: #ffd600;
-            border-left: 6px solid #00adb5;
-            padding-left: 12px;
-            margin-top: 32px;
-            margin-bottom: 16px;
-            font-size: 1.4rem;
-        }
-        ul, ol {
-            margin-left: 2em;
-            margin-bottom: 1.5em;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
-        code, pre {
-            background: #393e46;
-            color: #ffd600;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 1em;
-        }
-        pre {
-            display: block;
-            padding: 12px;
-            margin: 12px 0;
-            overflow-x: auto;
-        }
-        .note {
-            background: #393e46;
-            color: #ffd600;
-            border-left: 4px solid #00adb5;
-            padding: 10px 16px;
-            margin: 18px 0;
-            border-radius: 6px;
-        }
-        footer {
-            text-align: center;
-            color: #888;
-            margin-top: 40px;
-            font-size: 0.95rem;
-        }
-        @media (max-width: 900px) {
-            main {
-                padding: 16px 4vw;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Auto Tester マニュアル</h1>
-    </header>
-    <main>
-        <section>
-            <h2>1. 環境準備</h2>
-            <ul>
-                <li><strong>必要なソフトウェア</strong>
-                    <ul>
-                        <li>Python（推奨: 3.8以上）</li>
-                        <li>Appium（サーバー）</li>
-                        <li>Appium Inspector（UI要素確認用）</li>
-                        <li>Android SDK（adbコマンド利用のため）</li>
-                    </ul>
-                </li>
-                <li><strong>必要なPythonパッケージのインストール</strong>
-                    <pre><code>pip install Appium-Python-Client pytest beautifulsoup4</code></pre>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <h2>2. テストコードの仕組み</h2>
-            <p>
-                <strong>CommonCommand</strong>をベースクラスとして、基本操作（絶対座標・UI部品）を定義しています。<br>
-                各テストケースはこれらの基本操作を組み合わせて実現しています。
-            </p>
-            <ul>
-                <li>基本操作：絶対座標
-                    <ul>
-                        <li>タップ</li>
-                        <li>長押し</li>
-                        <li>スクロール</li>
-                        <li>スワイプ</li>
-                    </ul>
-                </li>
-                <li>基本操作：UI部品
-                    <ul>
-                        <li>ボタンクリック</li>
-                        <li>テキスト入力</li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <h2>3. テストの準備</h2>
-            <ul>
-                <li>開発者オプションからUSBデバッグを有効化</li>
-                <li>テストに使用する組合員についてデータの準備を行う</li>
-            </ul>
-        </section>
-        <section>
-            <h2>4. テストの実行</h2>
-            <ol>
-                <li>Appiumサーバを起動する<br>
-                    <pre><code>appium --allow-insecure=adb_shell</code></pre>
-                </li>
-                <li>pytestコマンドでテストケースを実行する<br>
-                    <pre><code>pytest -s appium_palapp_test.py</code></pre>
-                </li>
-                <li>GUIから実行する場合は以下のコマンド<br>
-                    <pre><code>python run_pytest_gui.py</code></pre>
-                </li>
-            </ol>
-        </section>
-        <section>
-            <h2>5. テストケースの個別実行</h2>
-            <p>特定のテストメソッドのみ実行したい場合は、<code>-k</code>オプションを使います。</p>
-            <pre><code>pytest -s appium_palapp_test.py -k 実行したいテストのメソッド名</code></pre>
-            <pre><code>pytest -s appium_palapp_test.py -k test_no_login_top</code></pre>
-        </section>
-        <section>
-            <h2>6. テストの評価（画像比較レポート生成）</h2>
-            <ol>
-                <li>評価処理を実行する<br>
-                    <pre><code>python image_similarity.py</code></pre>
-                </li>
-                <li>テスト結果の確認
-                    <ul>
-                        <li>各テストケースの結果は「reportN.html」にて確認できます。</li>
-                        <li>正しいテスト結果のスクリーンショットと実行結果のスクリーンショットをピクセル単位で比較します。</li>
-                    </ul>
-                </li>
-            </ol>
-        </section>
-        <section>
-            <h2>7. 画面構成と使い方（GUIの場合）</h2>
-            <ul>
-                <li><strong>テストケース選択</strong>：右側のチェックボックスで実行したいテストを選択できます。</li>
-                <li><strong>テスト実行</strong>：選択したテストのみを実行します。</li>
-                <li><strong>レポート生成</strong>：画像比較によるレポートを生成します。</li>
-                <li>実行したいテストケースにチェックを入れ、<strong>テスト実行</strong>ボタンをクリックしてください。</li>
-                <li>テストが完了すると、完了メッセージが表示されます。</li>
-                <li>テスト後、<strong>レポート生成</strong>ボタンで画像比較レポートを生成できます。</li>
-                <li>レポートは <code>reports/generated/</code> フォルダにHTML形式で出力されます。</li>
-            </ul>
-        </section>
-        <section>
-            <h2>8. Appium Inspectorの使い方</h2>
-            <ol>
-                <li>Appium Inspectorを起動</li>
-                <li>Desired Capabilitiesを入力（例: テストコードと同じ内容）</li>
-                <li>「Start Session」をクリック</li>
-                <li>画面上の要素をクリックしてIDやXPathを確認</li>
-            </ol>
-        </section>
-        <section>
-            <h2>注意事項</h2>
-            <ul>
-                <li>テスト実行中はウィンドウが一時的に操作できなくなる場合があります。</li>
-                <li>PyQt5やpytestなどの必要なライブラリがインストールされていることを確認してください。</li>
-                <li>レポート生成には画像ファイルが必要です。テスト実行後に行ってください。</li>
-            </ul>
-            <div class="note">
-                <strong>ヒント:</strong> テストやレポートの詳細は <a href="reports/generated/summary.html" style="color:#ffd600;">レポート概要</a> をご覧ください。
-            </div>
-        </section>
-    </main>
-</body>
-</html>
-```
-
----
-
-### ファイル: Appium/requirements.txt
-
-```text
-��a d b u t i l s = = 2 . 8 . 9  
- A p p i u m - P y t h o n - C l i e n t = = 5 . 1 . 1  
- a t t r s = = 2 5 . 3 . 0  
- c e r t i f i = = 2 0 2 5 . 4 . 2 6  
- c f f i = = 1 . 1 7 . 1  
- c h a r s e t - n o r m a l i z e r = = 3 . 4 . 2  
- c o l o r a m a = = 0 . 4 . 6  
- d e c o r a t o r = = 5 . 2 . 1  
- d e p r e c a t i o n = = 2 . 1 . 0  
- h 1 1 = = 0 . 1 6 . 0  
- i d n a = = 3 . 1 0  
- i n i c o n f i g = = 2 . 1 . 0  
- l x m l = = 5 . 4 . 0  
- n u m p y = = 2 . 2 . 6  
- o u t c o m e = = 1 . 3 . 0 . p o s t 0  
- p a c k a g i n g = = 2 5 . 0  
- p i l l o w = = 1 1 . 2 . 1  
- p l u g g y = = 1 . 6 . 0  
- p y c p a r s e r = = 2 . 2 2  
- P y Q t 5 = = 5 . 1 5 . 1 1  
- P y Q t 5 - Q t 5 = = 5 . 1 5 . 2  
- P y Q t 5 _ s i p = = 1 2 . 1 7 . 0  
- P y S o c k s = = 1 . 7 . 1  
- p y t e s t = = 8 . 3 . 5  
- r e q u e s t s = = 2 . 3 2 . 3  
- r e t r y 2 = = 0 . 9 . 5  
- s e l e n i u m = = 4 . 3 2 . 0  
- s n i f f i o = = 1 . 3 . 1  
- s o r t e d c o n t a i n e r s = = 2 . 4 . 0  
- t r i o = = 0 . 3 0 . 0  
- t r i o - w e b s o c k e t = = 0 . 1 2 . 2  
- t y p i n g _ e x t e n s i o n s = = 4 . 1 3 . 2  
- u i a u t o m a t o r 2 = = 3 . 2 . 1 0  
- u r l l i b 3 = = 2 . 4 . 0  
- w e b s o c k e t - c l i e n t = = 1 . 8 . 0  
- w s p r o t o = = 1 . 2 . 0  
- 
-```
-
----
-
-### ファイル: Appium/task.md
-
-```markdown
-# 残りやること
-
-### 実装できているケースの整理
-- 検証できないケースの確認してリストアップ
-
-### ケースごとの実行確認
-- STaで買い物タブとかご画面のケースごとの実行確認
-```
-
