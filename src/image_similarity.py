@@ -46,10 +46,10 @@ for filename in common_files:
             sim = 1 - (np.count_nonzero(diff_np) / diff_np.size)
             # 完全一致なら1.0000
             if np.all(diff_np == 0):
-                similarity = "1.00"
+                similarity = "OK"
             elif sim >= 0.990:
                 # 0.990より大きければ一致扱いにする
-                similarity = f"{sim:.5f}"
+                similarity = "OK"
             else:
                 # 0.990未満ならNG表記
                 similarity = f"NG：{sim:.5f}"
@@ -88,13 +88,17 @@ for idx, html_path in enumerate(html_files, 1):
     # {similarity_XXX} を実際の値で置換
     html = re.sub(r"\{similarity_([0-9]{3}(?:-\d+)?)\}", replace_similarity, html)
     # 埋め込んだ後のHTMLから類似度値を抽出し、1.0000以外があればNG
-    similarities = re.findall(r'>(1\.00|NG：[\d\.]+%|サイズ不一致|N/A)<', html)
+    similarities = re.findall(r'>(OK|NG：[\d\.]+%?|サイズ不一致|N/A)<', html)
     
+    print(f"report{idx}の類似度:")
+    print(f"{similarities}")
     if not similarities:
         report_status.append("NG")
     elif any(s == "N/A" for s in similarities):
         report_status.append("NG")
-    elif all(s == "1.00" for s in similarities):
+    elif any(s.startswith("NG：") for s in similarities):
+        report_status.append("NG")
+    elif all(s == "OK" for s in similarities):
         report_status.append("OK")
     else:
         report_status.append("NG")
@@ -112,6 +116,7 @@ if os.path.exists(summary_path):
         soup = BeautifulSoup(f, "html.parser")
     # 各reportXの項目を「OK」または「NG」に書き換え
     for i, ng in enumerate(report_status, 1):
+        print(f"report{i}: {ng}")
         tag = soup.find(id=f"report{i}")
         if tag:
             if ng == "NG":
