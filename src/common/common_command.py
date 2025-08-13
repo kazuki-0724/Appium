@@ -50,6 +50,9 @@ class CommonCommand:
             os.makedirs(folder)
         # フォルダ内にスクリーンショットを保存
         filepath = os.path.join(folder, filename)
+        # 既存ファイルがあれば削除
+        if os.path.exists(filepath):
+            os.remove(filepath)
         driver.save_screenshot(filepath)
         print(f"スクリーンショットを保存しました: {filepath}")
 

@@ -30,7 +30,7 @@ class Cart(CommonCommand):
 
     def do_test2(self,driver):
         try:
-            self.test_267_289(driver)
+            # self.test_267_289(driver)
             self.test_290_320(driver)
             self.test_321_334(driver)
             self.test_335_338(driver)
@@ -180,7 +180,7 @@ class Cart(CommonCommand):
 
 
             # 216-228が謎
-            self.long_tap(driver, 0.175, 0.595, 200)
+            self.long_tap(driver, 0.175, 1272/2412, 200)
             self.save_screenshot_with_date(driver, "cart_218.png")
             
             # クチコミを閉じる
@@ -431,9 +431,9 @@ class Cart(CommonCommand):
             self.long_tap(driver, 0.121, 0.364, 200)
             self.save_screenshot_with_date(driver, "cart_291.png")
 
-            self.scroll_vertical(driver, 256, Direction.DOWN.value)
+            self.scroll_vertical(driver, 572, Direction.DOWN.value)
             # 商品情報の「？」をタップする
-            self.long_tap(driver, 0.522, 0.818, 200)
+            self.long_tap(driver, 422/1080, 1832/2412, 200)
             self.save_screenshot_with_date(driver, "cart_292.png")
 
             # 「←」をタップする
@@ -441,7 +441,8 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_293.png")
           
             # 「クチコミ」をタップする
-            self.tap_anywhere(driver, 0.366, 0.721)
+            self.swipe_vertical(driver, 800, Direction.DOWN.value, WaitTime.SHORT.value)
+            self.long_tap(driver, 410/1080, 2083/2412, 200)
             self.save_screenshot_with_date(driver, "cart_294.png")
 
             # 「x」をタップする
@@ -453,9 +454,9 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_297.png")
 
             # お気に入りが見えるまでスクロール
-            self.scroll_vertical(driver, 487, Direction.DOWN.value)
+            self.scroll_vertical(driver, 600, Direction.DOWN.value)
             # お気に入りをタップする
-            self.long_tap(driver, 0.310, 0.842, 200)
+            self.long_tap(driver, 331/1080, 2146/2412, 200)
             self.save_screenshot_with_date(driver, "cart_298.png")
 
             # 「x」をタップする
@@ -468,9 +469,9 @@ class Cart(CommonCommand):
             self.save_screenshot_with_date(driver, "cart_302.png")
 
             # お気に入りが見えるまでスクロール
-            self.scroll_vertical(driver, 445, Direction.DOWN.value)
+            self.scroll_vertical(driver, 600, Direction.DOWN.value)
             # お気に入りをタップする
-            self.long_tap(driver, 0.310, 0.858, 200)
+            self.long_tap(driver, 331/1080, 2146/2412, 200)
             self.save_screenshot_with_date(driver, "cart_303.png")
 
             # 「x」をタップする

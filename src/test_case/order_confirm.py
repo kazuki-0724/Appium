@@ -22,6 +22,7 @@ class OrderConfirm(CommonCommand):
             # 増資の「？」をタップする
             self.tap_button(driver, self.ORDER_CONFIRM)
             self.long_tap(driver, 0.158, 0.435, 200)
+            self.sleep(WaitTime.LONG.value)
             self.save_screenshot_with_date(driver, "order_confirm_379.png")
 
             # 「X」をタップする
