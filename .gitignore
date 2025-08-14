@@ -1,7 +1,7 @@
 ```gitignore
 
 # Python
-__pycache__/
+**/__pycache__/
 src/test_case/__pycache__/
 
 # Pytest
