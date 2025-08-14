@@ -30,10 +30,12 @@ class Cart(CommonCommand):
 
     def do_test2(self,driver):
         try:
-            # self.test_267_289(driver)
+            self.test_267_289(driver)
             self.test_290_320(driver)
             self.test_321_334(driver)
             self.test_335_338(driver)
+            
+            # 確認不可のケース
             # self.test_359_374(driver)
 
         except Exception as e:
@@ -105,7 +107,7 @@ class Cart(CommonCommand):
 
 
             # 【お気に入り商品】
-            608, 670
+
             # 「自動カゴ追加設定」をタップする
             self.long_tap(driver, 0.562, 0.277, 200)
             self.save_screenshot_with_date(driver, "cart_188.png")

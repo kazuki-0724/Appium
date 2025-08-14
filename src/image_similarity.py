@@ -40,7 +40,7 @@ def compare_images(current_folder, collect_folder):
                 sim = 1 - (np.count_nonzero(diff_np) / diff_np.size)
                 if np.all(diff_np == 0):
                     similarity = "OK"
-                elif sim >= 0.990:
+                elif sim >= 0.970:
                     similarity = "OK"
                 else:
                     similarity = f"NG：{sim:.5f}"

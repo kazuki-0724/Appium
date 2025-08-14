@@ -2,7 +2,8 @@
 
 # Python
 __pycache__/
-    
+src/test_case/__pycache__/
+
 # Pytest
 .pytest_cache/
     

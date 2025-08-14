@@ -79,6 +79,10 @@ def test_2nd_block(driver):
         if ans != 'y':
             print("アプリを（クリーンインストール／データ消去）後、ログインのみした状態にしてください。")
             return
+        ans = input("レコメンドモーダルは非表示ですか？(Y/N): ").strip().lower()
+        if ans != 'y':
+            print("レコメンドモーダルを非表示にしてください。")
+            return
         test_shopping_tab(driver)
         test_item_search(driver)
     except Exception as e:
